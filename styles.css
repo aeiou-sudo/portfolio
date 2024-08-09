@@ -51,11 +51,26 @@ body {
     text-wrap: nowrap;
     flex-wrap: nowrap;
 }
-@media (max-width: 650px) {
-    .navbar .container {
+@media (max-width: 600px) {
+    /* .navbar .container {
         display: flex;
         flex-direction: column;
+    } */
+    .navbar .nav-links {
+        display: none;
+        flex-direction: row;
+        flex-wrap: wrap;
+        list-style: none;
     }
+    .navbar .menu-icon {
+        display: block;
+    }
+
+    /* Show the menu when the checkbox is checked */
+    #menu-toggle:checked ~ .nav-links {
+        display: flex;
+    }
+
 }
 
 /* Hide the checkbox by default */
@@ -64,7 +79,7 @@ body {
 }
 
 .menu-icon {
-    display: block;
+    display: none;
     font-size: 20px;
     cursor: pointer;
     color: black;
