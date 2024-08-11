@@ -10,33 +10,43 @@
     -ms-user-select: none; /* IE 10 and IE 11 */
     user-select: none; /* Standard syntax */
 }
-
+:root {
+    --light-theme-font: black;
+    --light-theme-background: white;
+    --dark-theme-font: #cccccc;
+    --dark-theme-background: #333333;
+    --logo-color: #070609;
+    --shadow--color: rgba(0, 0, 0, 0.5);
+    --shadow-light-color: rgba(0, 0, 0, 0.127);
+    --light-font-style: 300 1.5vw;
+}
 body {
-    background-color: rgb(255, 255, 255); /* Base color */
-    height: 100dvh; /* Ensures the container takes full viewport height */
+    background-color: var(--light-theme-background);
+    color: var(--light-theme-font);
     background-image: 
         radial-gradient(circle at 10% 10%, rgba(127, 0, 255, 0.4) 40%, transparent 10%),
         radial-gradient(circle at 30% 20%, rgba(255, 0, 255, 0.4) 40%, transparent 10%),
         radial-gradient(circle at 50% 40%, rgba(0, 127, 255, 0.4) 40%, transparent 70%),
         radial-gradient(circle at 70% 60%, rgba(72, 0, 255, 0.4) 40%, transparent 70%),
         radial-gradient(circle at 0% 100%, rgba(72, 0, 255, 0.5) 40%, transparent 10%),
-        radial-gradient(circle at 90% 80%, rgba(127, 0, 255, 0.4) 40%, transparent 70%);
-    background-size: cover; /* Ensures the background covers the container */
+        radial-gradient(circle at 90% 80%, rgba(127, 0, 255, 0.4) 40%, transparent 10%);
+    background-size:cover; /* Ensures the background covers the container */
     background-repeat:repeat; /* Prevents repeating */
-    background-attachment:scroll; /* Keeps background fixed during scrolling */
+    background-attachment:fixed; /* Keeps background fixed during scrolling */
 
+
+    scroll-snap-type: block mandatory;
+    height: 100%;
     width: 100%;
     overflow-x: hidden;
-    padding: 1rem;
     border-radius: 2rem;
     display: flex;
     flex-direction: column;
-    
+
     -webkit-font-smoothing: antialiased; /* Smoother font rendering */
     -ms-overflow-style: none; /* IE, Edge */
     scrollbar-width: none; /* Firefox */
 }
-
 /* Hide scrollbars for all browsers */
 body::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Opera */
@@ -44,24 +54,24 @@ body::-webkit-scrollbar {
 
 @media (prefers-color-scheme: dark) {
     body {
-        background-color: #1a1a1a !important;
-        color: #ffffff !important;
+        background-color: var(--dark-theme-background) !important;
+        color: var(--dark-theme-font) !important;
     }
 
     .navbar {
-        background-color: #333333 !important;
-        color: #ffffff !important;
+        background-color: var(--dark-theme-background) !important;
+        color: var(--dark-theme-font) !important;
     }
 
     .navbar .nav-links {
-        background-color: #333333 !important;
+        background-color: var(--dark-theme-background) !important;
+        color: var(--dark-theme-font) !important;
     }
 }
 
 /* Navigation Bar Styles */
 .navbar {
-    background-color: #fafafaf5;
-    color: #000000;
+    background-color: var(--light-theme-background);
     padding: 1rem 1.5rem;
     position: fixed;
     width: 100vw;
@@ -95,7 +105,7 @@ body::-webkit-scrollbar {
 
 .nav-links a {
     text-decoration: none;
-    color: #000000;
+    color: var(--light-theme-font);
     font-size: 0.75rem;
     font-weight: 400;
     padding: 0.5rem 0.75rem;
@@ -112,7 +122,19 @@ body::-webkit-scrollbar {
     font-weight: 400;
     text-transform: lowercase;
     text-decoration: none;
-    color: #070609;
+    color: var(--logo-color);
+}
+
+
+/* Hide checkbox for the menu toggle */
+#menu-toggle {
+    display: none;
+}
+
+/* Hamburger menu icon */
+.menu-icon {
+    display: none;
+    cursor: pointer;
 }
 
 /* Mobile Styles */
@@ -125,13 +147,12 @@ body::-webkit-scrollbar {
         display: none;
         flex-direction: column;
         width: 100%;
-        background-color: #fafafa;
     }
 
     .navbar .menu-icon {
         display: block;
         font-size: 1.25rem;
-        color: #000000;
+        color: var(--logo-color);
     }
 
     /* Show links when checkbox is checked */
@@ -140,15 +161,44 @@ body::-webkit-scrollbar {
     }
 }
 
-/* Hide checkbox for the menu toggle */
-#menu-toggle {
-    display: none;
+/* Content part begins here--> */
+
+/* Section Styles */
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Center alignment */
+    flex-direction: column; /* Column layout */
+
+    scroll-snap-align: start;
+    min-height: 90svh; /* Viewport height unit */
+    width: 90vw; /* Added to constrain the width */
+    scroll-margin-top: 60px;
+    margin: auto;
+    margin-top: 4rem;
+
+    text-align: center; /* Center text */
+    font-size: 0.75rem;
+    font-weight: 400;
+
+    border-radius: 5rem;
+    background-color: inherit;
+    box-shadow: 0 0 5rem .5rem var(--shadow--color);
+    background-image: 
+    radial-gradient(circle at 10% 10%, rgba(127, 0, 255, 0.4) 40%, transparent 80%),
+    radial-gradient(circle at 30% 20%, rgba(255, 0, 255, 0.4) 40%, transparent 80%),
+    radial-gradient(circle at 50% 40%, rgba(0, 127, 255, 0.4) 40%, transparent 80%),
+    radial-gradient(circle at 70% 60%, rgba(72, 0, 255, 0.4) 40%, transparent 80%),
+    radial-gradient(circle at 0% 100%, rgba(72, 0, 255, 0.5) 40%, transparent 80%),
+    radial-gradient(circle at 90% 80%, rgba(127, 0, 255, 0.4) 40%, transparent 80%);
 }
 
-/* Hamburger menu icon */
-.menu-icon {
-    display: none;
-    cursor: pointer;
+@media (max-width: 650px) {
+    section {
+        scroll-margin-top: 80px;
+        padding: 2rem;
+        max-width: 95vw; /* Adjust width for smaller screens */
+    }
 }
 
 /* Home section padding adjustments */
@@ -163,47 +213,16 @@ body::-webkit-scrollbar {
     }
 }
 
-/* Section Styles */
-section {
-    scroll-margin-top: 60px;
-    min-height: 100svh; /* Viewport height unit */
-    height: fit-content;
-    display: flex;
-    justify-content: center;
-    align-items: center; /* Center alignment */
-    background-color: rgba(0, 0, 0, 0);
-    box-shadow: 0 0 5rem .5rem rgba(0, 0, 0, 0.5);
-    border-radius: 5rem;
-    padding: 5rem;
-    font-size: 0.75rem;
-    font-weight: 400;
-    color: #070609;
-    width: 90vw; /* Added to constrain the width */
-    overflow: hidden; /* Prevent overflow */
-    text-align: center; /* Center text */
-    flex-direction: column; /* Column layout */
-    margin: auto;
-    margin-top: 50px;
 
-}
-
-@media (max-width: 650px) {
-    section {
-        scroll-margin-top: 80px;
-        padding: 2rem;
-        max-width: 95vw; /* Adjust width for smaller screens */
-    }
-}
 
 /* Home Section Styling */
 .home {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+
     position: relative;
     max-width: 90vw; /* Added to constrain the width */
-    overflow: hidden; /* Prevent overflow */
 }
 
 .home .container {
@@ -217,9 +236,9 @@ section {
     font-size: 1.2rem;
     font-weight: 800;
     letter-spacing: 1px;
-    font-family: cursive;
+    /* font-family: cursive; */
     text-wrap: nowrap;
-    box-shadow: 0 0 .5rem .1rem rgba(0, 0, 0, 0.127);
+    box-shadow: 0 0 .5rem .1rem var(--shadow-light-color);
     border: none;
     padding: 1rem;
 }
@@ -234,35 +253,59 @@ section {
 .home .intro {
     padding-top: 5rem;
 }
+.intro-part p {
+    padding: 10px;
+}
 
 .home .intro .intro-part {
     font-style: oblique;
-    font-size: 4vw;
     font-weight: bolder;
     opacity: 0;
     transform: translateY(100%);
-    animation: slideUp 1s ease-in-out forwards, colorChange 5s ease-out forwards;
-}
-.intro-part p {
-    padding: 0 10px;
 }
 
-@keyframes colorChange {
-    20% {
-        color: rgba(0, 0, 0, 0.13); /* Initial color */
-    }
-
-    40% {
-        color: rgba(255, 255, 255, 0.471); /* Midway color */
-    }
-
-    80% {
-        color: rgba(0, 0, 0, 0.676); /* Initial color */
-    }
-    100% {
-        color: white; /* Midway color */
+@media (prefers-color-scheme: dark) {
+    .home .intro .intro-part {
+        animation: slideUp 1s ease-in-out forwards, font-color-change-light-to-dark 5s ease-in-out forwards;
     }
 }
+
+@media (prefers-color-scheme: light) {
+    .home .intro .intro-part {
+        animation: slideUp 1s ease-in-out forwards, font-color-change-dark-to-light 5s ease-in-out forwards;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0%);
+    }
+}
+
+@keyframes font-color-change-light-to-dark {
+    from {
+        color: var(--light-theme-font);
+    }
+    to {
+        color: var(--dark-theme-font);
+    }
+}
+
+@keyframes font-color-change-dark-to-light {
+    from {
+        color: var(--dark-theme-font);
+    }
+    to {
+        color: var(--light-theme-font);
+    }
+}
+
+
 
 /* New body styling */
 @keyframes slideUp {
@@ -276,14 +319,43 @@ section {
     }
 }
 
-.intro #name {
+.intro #salutation {
     animation-delay: 1s;
+    font-size: 4vw;
+
 }
 
-.intro #title {
+.intro #name {
+    position: relative;
+    left: 100px;
     animation-delay: 2s;
+    font-size: 4vw;
+
 }
 
 .intro #focus {
     animation-delay: 3s;
+    font-size: 2vw;
+
+}
+
+.intro #skill-1 {
+    animation-delay: 4s;
+    font: var(--light-font-style);
+
+}
+.intro #skill-2 {
+    animation-delay: 4.2s;
+    font: var(--light-font-style);
+
+}
+.intro #skill-3 {
+    animation-delay: 4.4s;
+    font: var(--light-font-style);
+
+}
+.intro #ending {
+    animation-delay: 0s;
+    font-size: 1vw;
+
 }
