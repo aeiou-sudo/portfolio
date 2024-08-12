@@ -69,6 +69,10 @@ body::-webkit-scrollbar {
     }
 }
 
+li {
+    list-style: none;
+}
+
 /* Navigation Bar Styles */
 .navbar {
     background-color: var(--light-theme-background);
@@ -356,6 +360,70 @@ section {
 }
 .intro #ending {
     animation-delay: 0s;
-    font-size: 1vw;
+    font: var(--light-font-style);
 
+}
+
+
+/* About Section Styling */
+
+.about .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    min-height: inherit;
+    height: fit-content;
+    padding-top: 1rem;
+    width: inherit;
+
+}
+
+.container h2 {
+    margin-bottom: 1rem; /* Adds space below the h2 */
+}
+
+.about .about-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* Makes about-content fill the available space */
+    justify-content: center; /* Centers content horizontally */
+    align-items: center; /* Centers content vertically */
+    padding: 2rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.about-content p {
+    flex: 1;
+    padding: 1rem;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    box-shadow: 0 0 5rem .5rem var(--shadow--color);
+    border-radius: 2rem;
+    text-align: left;
+}
+span {
+    font-weight: bold;
+    font-style: oblique;
+}
+
+/* experience Section Styling */
+
+.experience .container {
+    display: flex;
+    flex-direction: column;
+    min-height: inherit;
+    height: fit-content;
+    padding-top: 1rem;
+
+}
+.experience .container div {
+    box-shadow: 0 0 5rem .5rem var(--shadow--color);
+    border-radius: 2rem;
+    padding: 1rem;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    margin: auto;
+    width: fit-content;
+    max-width: 80vw;
 }
