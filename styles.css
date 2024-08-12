@@ -18,7 +18,9 @@
     --logo-color: #070609;
     --shadow--color: rgba(0, 0, 0, 0.5);
     --shadow-light-color: rgba(0, 0, 0, 0.127);
-    --light-font-style: 300 1.5vw;
+    --light-font-style: 1.5vw;
+    --medium-font-style: 2vw;
+    --large-font: 4vw;
 }
 body {
     background-color: var(--light-theme-background);
@@ -175,7 +177,7 @@ section {
     flex-direction: column; /* Column layout */
 
     scroll-snap-align: start;
-    min-height: 90svh; /* Viewport height unit */
+    /* min-height: 90svh; */
     width: 90vw; /* Added to constrain the width */
     scroll-margin-top: 60px;
     margin: auto;
@@ -224,7 +226,7 @@ section {
     display: flex;
     justify-content: center;
     align-items: center;
-
+    min-height: 90svh;
     position: relative;
     max-width: 90vw; /* Added to constrain the width */
 }
@@ -345,42 +347,65 @@ section {
 
 .intro #skill-1 {
     animation-delay: 4s;
-    font: var(--light-font-style);
+    font: 300 1vw;
 
 }
 .intro #skill-2 {
     animation-delay: 4.2s;
-    font: var(--light-font-style);
+    font: 300 1vw;
 
 }
 .intro #skill-3 {
     animation-delay: 4.4s;
-    font: var(--light-font-style);
+    font: 300 1vw;
 
 }
 .intro #ending {
     animation-delay: 0s;
-    font: var(--light-font-style);
-
+    font: 1000 1vw;
 }
 
 
 /* About Section Styling */
+.about {
+    height: inherit;
+
+}
 
 .about .container {
     display: flex;
     flex-direction: column;
     justify-content: start;
-    min-height: inherit;
-    height: fit-content;
     padding-top: 1rem;
     width: inherit;
-
+    overflow:hidden; /* Hide overflow content */
+    height: calc(100vh / 2);
+    border-radius: inherit;
+    transition: max-height 0.5s ease; /* Smooth transition for height change */
+    background: transparent;
+    background-color: transparent;
+}
+.about .expand-button {
+    border-radius: inherit;
 }
 
-.container h2 {
-    margin-bottom: 1rem; /* Adds space below the h2 */
+
+.toggle-checkbox {
+    display: none; /* Hide the checkbox */
 }
+
+.toggle-checkbox:checked + .expand-button .container {
+    min-height: 90svh;
+    height: fit-content; /* Expand to full height */
+}
+
+.expand-button {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    cursor: default;
+}
+
 
 .about .about-content {
     display: flex;
@@ -391,6 +416,7 @@ section {
     padding: 2rem;
     gap: 1rem;
     flex-wrap: wrap;
+    /* border-radius: inherit; */
 }
 
 .about-content p {
@@ -402,10 +428,12 @@ section {
     border-radius: 2rem;
     text-align: left;
 }
+
 span {
     font-weight: bold;
     font-style: oblique;
 }
+
 
 /* experience Section Styling */
 
