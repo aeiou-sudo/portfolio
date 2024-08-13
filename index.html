@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
 </head>
 
-<body>
+<body class="scroll-container">
 
     <!-- Navigation Bar -->
     <nav class="navbar" id="navbar">
@@ -35,7 +35,7 @@
     
 
     <!-- Home Section -->
-    <section id="home" class="home">
+    <section id="home" class="home" tabindex="0">
         <div class="container">
 
             <!-- Inspirational Quote -->
@@ -73,7 +73,7 @@
     </section>
 
     <!-- About Me Section -->
-    <section id="about" class="about">
+    <section id="about" class="about" tabindex="0">
         <input type="checkbox" id="toggle-about" class="toggle-checkbox">
         <label for="toggle-about" class="expand-button">
         <div class="container">
@@ -112,12 +112,12 @@
     
 
     <!-- Experience Section -->
-    <section id="experience" class="experience">
+    <section id="experience" class="experience" tabindex="0">
         <div class="container">
             <h2>Work Experience</h2>
             <div class="experience-item">
                 <h3>Apprenticeship</h3>
-                <p><strong>AT&T Communications India Pvt. Ltd., Bengaluru</strong> | November 2022 – November 2023</p>
+                <p class="title-year"><strong>AT&T Communications India Pvt. Ltd., Bengaluru</strong> November 2022 to November 2023</p>
                 <p>
                     During my apprenticeship at AT&T, I gained practical experience in advanced network technologies and
                     directly contributed to enhancing the Business Customer Experience.
@@ -132,12 +132,13 @@
                         cross-functional teams, demonstrating strong communication and teamwork abilities.</li>
                 </ul>
             </div>
+            
         </div>
 
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="projects">
+    <section id="projects" class="projects" tabindex="0">
         <div class="container">
             <h2>Projects</h2>
             <div class="project-item">
@@ -161,11 +162,21 @@
                     <li>Utilized SQLite for efficient data storage and management on mobile devices.</li>
                 </ul>
             </div>
+            <div class="project-item">
+                <h3>Portfolio Website</h3>
+                <p>Technologies: HTML, CSS</p>
+                <ul>
+                    <li>Developed a responsive portfolio website as part of the freeCodeCamp Responsive Web Design project.
+                    </li>
+                    <li>Implemented a clean, modern design using HTML and CSS to showcase projects, skills, and contact information.</li>
+                    <li>Utilized CSS Flexbox and Grid for a responsive layout that adapts to various screen sizes.</li>
+                </ul>
+            </div>
         </div>
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="skills">
+    <section id="skills" class="skills" tabindex="0">
         <div class="container">
             <h2>Technical Skills</h2>
             <ul>
@@ -182,7 +193,7 @@
     </section>
 
     <!-- Education Section -->
-    <section id="education" class="education">
+    <section id="education" class="education" tabindex="0">
         <div class="container">
             <h2>Education</h2>
             <div class="education-item">
@@ -196,7 +207,7 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact">
+    <section id="contact" class="contact" tabindex="0">
         <div class="container">
             <h2>Contact</h2>
             <p>Feel free to reach out to me via email or through my social media profiles.</p>
@@ -207,7 +218,7 @@
     </section>
 
     <!-- Resume Section -->
-    <section id="resume" class="resume">
+    <section id="resume" class="resume" tabindex="0">
         <div class="container">
             <h2>Resume</h2>
             <p>You can download my resume <a href="resume.pdf" download>here</a>.</p> <!-- Add your resume file -->
@@ -215,7 +226,7 @@
     </section>
 
     <!-- References Section -->
-    <section id="references" class="references">
+    <section id="references" class="references" tabindex="0">
         <div class="container">
             <h2>References</h2>
             <p>Available upon request.</p> <!-- You can add more specific references if you have them -->

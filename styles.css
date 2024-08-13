@@ -36,8 +36,8 @@ body {
     background-repeat:repeat; /* Prevents repeating */
     background-attachment:fixed; /* Keeps background fixed during scrolling */
 
-
-    scroll-snap-type: block mandatory;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
     height: 100%;
     width: 100%;
     overflow-x: hidden;
@@ -369,6 +369,7 @@ section {
 /* About Section Styling */
 .about {
     height: inherit;
+    max-width: 90vw; /* Added to constrain the width */
 
 }
 
@@ -437,21 +438,96 @@ span {
 
 /* experience Section Styling */
 
+.experience {
+    max-width: 90vw; /* Added to constrain the width */
+}
+
 .experience .container {
     display: flex;
     flex-direction: column;
-    min-height: inherit;
+    justify-content: center;
+    align-items: center;
     height: fit-content;
+    min-height: 50svh;
     padding-top: 1rem;
-
+    border-radius: inherit;
+    padding: 2rem;
+    background-color: transparent;
+    background: inherit;
 }
-.experience .container div {
+.experience .experience-item {
     box-shadow: 0 0 5rem .5rem var(--shadow--color);
-    border-radius: 2rem;
-    padding: 1rem;
+    border-radius: 5rem;
+    padding: 2rem;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.experience .experience-item p,  .experience .experience-item li {
     font-size: 1rem;
     letter-spacing: 1px;
-    margin: auto;
-    width: fit-content;
-    max-width: 80vw;
+    padding: 1rem;
+    text-align: left;
+    width: 100%;
+}
+.experience .experience-item h3 {
+    letter-spacing: 1px;
+    padding: 1rem;
+}
+.title-year {
+    display: flex;
+    justify-content: space-between;
+    font-style: italic;
+    gap: 1rem;
+}
+
+/* projects styling */
+
+.projects {
+    max-width: 90vw; /* Added to constrain the width */
+}
+
+.projects .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+    min-height: 50svh;
+    width: inherit;
+    margin-top: 1rem;
+    border-radius: inherit;
+    background-color: transparent;
+    background: inherit;
+}
+.project-item {
+    width: 90%;
+    box-shadow: 0 0 5rem .5rem var(--shadow--color);
+    border-radius: 5rem;
+    padding: 2rem;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1rem;
+
+}
+
+.project-item * {
+    padding-top: 1rem;
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+.projects ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.projects ul li {
+    box-shadow: 0 0 5rem .5rem var(--shadow--color);
+    padding: 2rem;
+    border-radius: 5rem;
 }
