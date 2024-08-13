@@ -23,6 +23,10 @@
     --large-font: 4vw;
 }
 body {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
     background-color: var(--light-theme-background);
     color: var(--light-theme-font);
     background-image: 
@@ -35,16 +39,8 @@ body {
     background-size:cover; /* Ensures the background covers the container */
     background-repeat:repeat; /* Prevents repeating */
     background-attachment:fixed; /* Keeps background fixed during scrolling */
-
-    overflow-y: scroll;
-    scroll-snap-type: y mandatory;
-    height: 100%;
-    width: 100%;
-    overflow-x: hidden;
     border-radius: 2rem;
-    display: flex;
-    flex-direction: column;
-
+    overflow-x: hidden;
     -webkit-font-smoothing: antialiased; /* Smoother font rendering */
     -ms-overflow-style: none; /* IE, Edge */
     scrollbar-width: none; /* Firefox */
@@ -77,41 +73,36 @@ li {
 
 /* Navigation Bar Styles */
 .navbar {
-    background-color: var(--light-theme-background);
-    padding: 1rem 1.5rem;
-    position: fixed;
     width: 100vw;
+    position: fixed;
     top: 0;
     left: 0;
+    background-color: var(--light-theme-background);
+    padding: 1rem 1.5rem;
     z-index: 999;
     text-wrap: nowrap;
 }
 
 /* Container within the Navbar */
 .navbar .container {
+    width: 100%;
+    max-width: 1200px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
-    max-width: 1200px;
     margin: 0 auto;
 }
 
 /* Navigation Links */
 .nav-links {
     display: flex;
-    list-style: none;
     flex-wrap: wrap;
-    justify-content: flex-end;
-}
-
-.nav-links li {
-    margin-left: 1rem;
+    justify-content: space-around;
 }
 
 .nav-links a {
-    text-decoration: none;
     color: var(--light-theme-font);
+    text-decoration: none;
     font-size: 0.75rem;
     font-weight: 400;
     padding: 0.5rem 0.75rem;
@@ -124,11 +115,11 @@ li {
 
 /* Logo Styles */
 .nav-logo a {
+    color: var(--logo-color);
     font-size: 1rem;
     font-weight: 400;
     text-transform: lowercase;
     text-decoration: none;
-    color: var(--logo-color);
 }
 
 
@@ -150,15 +141,15 @@ li {
     }
 
     .navbar .nav-links {
+        width: 100%;
         display: none;
         flex-direction: column;
-        width: 100%;
     }
 
     .navbar .menu-icon {
         display: block;
-        font-size: 1.25rem;
         color: var(--logo-color);
+        font-size: 1.25rem;
     }
 
     /* Show links when checkbox is checked */
@@ -171,47 +162,36 @@ li {
 
 /* Section Styles */
 section {
+    width: 90vw;
+    min-height: 90svh;
+    height: fit-content;
     display: flex;
     justify-content: center;
-    align-items: center; /* Center alignment */
-    flex-direction: column; /* Column layout */
-
-    scroll-snap-align: start;
-    /* min-height: 90svh; */
-    width: 90vw; /* Added to constrain the width */
+    align-items: center;
+    flex-direction: column;
+    background-image: 
+        radial-gradient(circle at 10% 10%, rgba(127, 0, 255, 0.4) 40%, transparent 80%),
+        radial-gradient(circle at 30% 20%, rgba(255, 0, 255, 0.4) 40%, transparent 80%),
+        radial-gradient(circle at 50% 40%, rgba(0, 127, 255, 0.4) 40%, transparent 80%),
+        radial-gradient(circle at 70% 60%, rgba(72, 0, 255, 0.4) 40%, transparent 80%),
+        radial-gradient(circle at 0% 100%, rgba(72, 0, 255, 0.5) 40%, transparent 80%),
+        radial-gradient(circle at 90% 80%, rgba(127, 0, 255, 0.4) 40%, transparent 80%);
     scroll-margin-top: 60px;
     margin: auto;
     margin-top: 4rem;
-
-    text-align: center; /* Center text */
-    font-size: 0.75rem;
     font-weight: 400;
-
+    font-size: 1rem;
     border-radius: 5rem;
     background-color: inherit;
     box-shadow: 0 0 5rem .5rem var(--shadow--color);
-    background-image: 
-    radial-gradient(circle at 10% 10%, rgba(127, 0, 255, 0.4) 40%, transparent 80%),
-    radial-gradient(circle at 30% 20%, rgba(255, 0, 255, 0.4) 40%, transparent 80%),
-    radial-gradient(circle at 50% 40%, rgba(0, 127, 255, 0.4) 40%, transparent 80%),
-    radial-gradient(circle at 70% 60%, rgba(72, 0, 255, 0.4) 40%, transparent 80%),
-    radial-gradient(circle at 0% 100%, rgba(72, 0, 255, 0.5) 40%, transparent 80%),
-    radial-gradient(circle at 90% 80%, rgba(127, 0, 255, 0.4) 40%, transparent 80%);
 }
 
 @media (max-width: 650px) {
     section {
         scroll-margin-top: 80px;
         padding: 2rem;
-        max-width: 95vw; /* Adjust width for smaller screens */
     }
 }
-
-/* Home section padding adjustments */
-.home {
-    padding-top: 60px;
-}
-
 @media (max-width: 900px) {
     .home {
         padding-top: 90px;
@@ -219,34 +199,20 @@ section {
     }
 }
 
-
-
-/* Home Section Styling */
-.home {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 90svh;
-    position: relative;
-    max-width: 90vw; /* Added to constrain the width */
-}
-
 .home .container {
-    display: flex;
+    display: inherit;
     flex-direction: column;
     align-items: center;
     text-align: center;
 }
 
-.home .quote p i {
+.home .quote i {
     font-size: 1.2rem;
     font-weight: 800;
     letter-spacing: 1px;
-    /* font-family: cursive; */
     text-wrap: nowrap;
-    box-shadow: 0 0 .5rem .1rem var(--shadow-light-color);
-    border: none;
     padding: 1rem;
+    box-shadow: 0 0 .5rem .1rem var(--shadow-light-color);
 }
 
 .home .quote {
@@ -347,67 +313,60 @@ section {
 
 .intro #skill-1 {
     animation-delay: 4s;
-    font: 300 1vw;
+    font-size: 1vw;
+    font-weight: 500;
 
 }
 .intro #skill-2 {
     animation-delay: 4.2s;
-    font: 300 1vw;
-
+    font-size: 1vw;
+    font-weight: 500;
 }
 .intro #skill-3 {
     animation-delay: 4.4s;
-    font: 300 1vw;
-
+    font-size: 1vw;
+    font-weight: 500;
 }
 .intro #ending {
     animation-delay: 0s;
-    font: 1000 1vw;
+    font-size: 1vw;
+    font-weight: 1000;
 }
 
 
 /* About Section Styling */
 .about {
-    height: inherit;
-    max-width: 90vw; /* Added to constrain the width */
-
+    min-height: unset;
+    height: unset;
 }
 
 .about .container {
-    display: flex;
+    height: calc(100vh / 1.9);
+    display: inherit;
     flex-direction: column;
     justify-content: start;
-    padding-top: 1rem;
-    width: inherit;
-    overflow:hidden; /* Hide overflow content */
-    height: calc(100vh / 2);
-    border-radius: inherit;
-    transition: max-height 0.5s ease; /* Smooth transition for height change */
     background: transparent;
     background-color: transparent;
-}
-.about .expand-button {
+    padding-top: 1rem;
+    overflow: hidden;
     border-radius: inherit;
+    transition: max-height 0.5s ease; /* Smooth transition for height change */
 }
-
 
 .toggle-checkbox {
     display: none; /* Hide the checkbox */
 }
-
-.toggle-checkbox:checked + .expand-button .container {
+#toggle-about:checked + .expand-button .container {
     min-height: 90svh;
     height: fit-content; /* Expand to full height */
 }
-
-.expand-button {
+.about .expand-button {
+    border-radius: inherit;
     display: flex;
     justify-content: center;
     margin-top: 1rem;
     cursor: default;
 }
-
-
 .about .about-content {
     display: flex;
     flex-direction: column;
@@ -417,17 +376,16 @@ section {
     padding: 2rem;
     gap: 1rem;
     flex-wrap: wrap;
-    /* border-radius: inherit; */
 }
 
 .about-content p {
     flex: 1;
     padding: 1rem;
     font-size: 1rem;
+    text-align: left;
     letter-spacing: 1px;
     box-shadow: 0 0 5rem .5rem var(--shadow--color);
     border-radius: 2rem;
-    text-align: left;
 }
 
 span {
@@ -437,9 +395,8 @@ span {
 
 
 /* experience Section Styling */
-
 .experience {
-    max-width: 90vw; /* Added to constrain the width */
+    min-height: unset;
 }
 
 .experience .container {
@@ -447,29 +404,27 @@ span {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: fit-content;
-    min-height: 50svh;
+    background-color: transparent;
+    background: inherit;
     padding-top: 1rem;
     border-radius: inherit;
     padding: 2rem;
-    background-color: transparent;
-    background: inherit;
 }
 .experience .experience-item {
-    box-shadow: 0 0 5rem .5rem var(--shadow--color);
-    border-radius: 5rem;
-    padding: 2rem;
-    margin-top: 1rem;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    border-radius: 5rem;
+    padding: 2rem;
+    margin-top: 1rem;
+    box-shadow: 0 0 5rem .5rem var(--shadow--color);
 }
 .experience .experience-item p,  .experience .experience-item li {
+    width: 100%;
     font-size: 1rem;
     letter-spacing: 1px;
     padding: 1rem;
     text-align: left;
-    width: 100%;
 }
 .experience .experience-item h3 {
     letter-spacing: 1px;
@@ -483,10 +438,6 @@ span {
 }
 
 /* projects styling */
-
-.projects {
-    max-width: 90vw; /* Added to constrain the width */
-}
 
 .projects .container {
     display: flex;
@@ -530,4 +481,191 @@ span {
     box-shadow: 0 0 5rem .5rem var(--shadow--color);
     padding: 2rem;
     border-radius: 5rem;
+}
+
+/* skills styles */
+
+.skills {
+
+    height: fit-content;
+}
+
+.skills .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: inherit;
+    min-height: inherit;
+    width: 90%;
+    margin-top: 1rem;
+    border-radius: inherit;
+    background-color: transparent;
+    background: inherit;
+}
+
+.skills ul {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 2rem;
+    gap: 1rem;
+    padding: 2rem;
+}
+
+.skills li {
+    background-color: transparent;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 5rem .5rem var(--shadow--color);
+    text-align: center;
+    font-size: 1rem;
+}
+@media (max-width: 900px) {
+    .skills ul {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .skills ul {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* education section styles */
+
+.education {
+
+    height: fit-content;
+}
+
+.education .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: inherit;
+    min-height: inherit;
+    width: 90%;
+    margin-top: 1rem;
+    border-radius: inherit;
+    background-color: transparent;
+    background: inherit;
+    padding: 1rem;
+}
+.education-item {
+    padding: 1rem;
+    margin-top: 2rem;
+    border-radius: 5rem;
+    box-shadow: 0 0 5rem .5rem var(--shadow--color);
+}
+
+.education-item p {
+    font-size: 1rem;
+    letter-spacing: 1px;
+    padding: 1rem;
+    text-align: left;
+    width: 100%;
+}
+
+/* contact styling */
+
+.contact {
+    min-height: 90svh;
+    height: fit-content;
+}
+
+.contact .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    height: inherit;
+    min-height: inherit;
+    width: 90%;
+    margin-top: 1rem;
+    border-radius: inherit;
+    background-color: transparent;
+    background: inherit;
+    padding: 1rem;
+}
+
+
+.contact p {
+    font-size: 1rem;
+    letter-spacing: 1px;
+    padding: 1rem;
+    text-align: left;
+    width: 100%;
+    border-radius: 5rem;
+    box-shadow: 0 0 5rem .5rem var(--shadow--color);
+}
+
+/* resume section style */
+
+.resume {
+    min-height: 90svh;
+    height: fit-content;
+}
+
+.resume .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    height: inherit;
+    min-height: inherit;
+    width: 90%;
+    margin-top: 1rem;
+    border-radius: inherit;
+    background-color: transparent;
+    background: inherit;
+    padding: 1rem;
+}
+
+
+.resume p {
+    font-size: 1rem;
+    letter-spacing: 1px;
+    padding: 1rem;
+    text-align: left;
+    width: 100%;
+    border-radius: 5rem;
+    box-shadow: 0 0 5rem .5rem var(--shadow--color);
+}
+
+/* reference section style */
+
+.references {
+    min-height: 90svh;
+    height: fit-content;
+}
+
+.references .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    height: inherit;
+    min-height: inherit;
+    width: 90%;
+    margin-top: 1rem;
+    border-radius: inherit;
+    background-color: transparent;
+    background: inherit;
+    padding: 1rem;
+}
+
+
+.references p {
+    font-size: 1rem;
+    letter-spacing: 1px;
+    padding: 1rem;
+    text-align: left;
+    width: 100%;
+    border-radius: 5rem;
+    box-shadow: 0 0 5rem .5rem var(--shadow--color);
 }
