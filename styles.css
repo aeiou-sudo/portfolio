@@ -440,24 +440,36 @@ span {
 /* projects styling */
 
 .projects .container {
+    height: 90svh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    height: fit-content;
-    min-height: 50svh;
+    overflow: hidden;
     width: inherit;
     margin-top: 1rem;
     border-radius: inherit;
     background-color: transparent;
     background: inherit;
 }
+
+#toggle-projects:checked + .expand-button .container {
+    height: fit-content; /* Expand to full height */
+}
+.projects .expand-button {
+    border-radius: inherit;
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    cursor: default;
+}
+
 .project-item {
-    width: 90%;
+    
     box-shadow: 0 0 5rem .5rem var(--shadow--color);
     border-radius: 5rem;
     padding: 2rem;
-    margin-top: 1rem;
+    margin: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -486,30 +498,31 @@ span {
 /* skills styles */
 
 .skills {
-
     height: fit-content;
+    min-height: unset;
 }
 
 .skills .container {
+    height: fit-content;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    height: inherit;
-    min-height: inherit;
-    width: 90%;
-    margin-top: 1rem;
-    border-radius: inherit;
     background-color: transparent;
     background: inherit;
+    margin-top: 1rem;
+    border-radius: inherit;
 }
 
 .skills ul {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    margin-top: 2rem;
     gap: 1rem;
     padding: 2rem;
+    box-shadow: 0 0 5rem .5rem var(--shadow--color);
+    margin: 2rem;
+    border-radius: inherit;
+
 }
 
 .skills li {
