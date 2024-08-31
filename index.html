@@ -14,28 +14,28 @@
     <nav class="navbar" id="navbar">
         <div class="container">
             <div class="nav-logo">
-                <a href="#home">Whoami</a>
+                <a href="#home" id="whoami">Whoami</a>
             </div>
             <!-- Checkbox and Label for Hamburger Menu -->
             <input type="checkbox" id="menu-toggle">
             <label for="menu-toggle" class="menu-icon">&#9776;</label>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></label></li>
-                <li><a href="#experience">Work History</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#contact">Ping me</a></li>
-                <li><a href="#resume">Resume</a></li>
-                <li><a href="#references">References</a></li>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#home" id="home-link">Home</a></li>
+                <li><a href="#about" id="about-link">About</a></label></li>
+                <li><a href="#experience" id="experience-link">Work History</a></li>
+                <li><a href="#projects" id="projects-link">Projects</a></li>
+                <!-- <li><a href="#skills">Skills</a></li> -->
+                <!-- <li><a href="#education">Education</a></li> -->
+                <li><a href="#contact" id="contact-link">Ping me</a></li>
+                <!-- <li><a href="#resume">Resume</a></li> -->
+                <!-- <li><a href="#references">References</a></li> -->
             </ul>
         </div>
     </nav>
     
 
     <!-- Home Section -->
-    <section id="home" class="home" tabindex="0">
+    <section id="home" class="home">
         <div class="container">
 
             <!-- Inspirational Quote -->
@@ -73,7 +73,7 @@
     </section>
 
     <!-- About Me Section -->
-    <section id="about" class="about" tabindex="0">
+    <section id="about" class="about hidden">
         <input type="checkbox" id="toggle-about" class="toggle-checkbox">
         <label for="toggle-about" class="expand-button">
             <div class="container">
@@ -111,7 +111,7 @@
     
 
     <!-- Experience Section -->
-    <section id="experience" class="experience" tabindex="0">
+    <section id="experience" class="experience hidden">
         <div class="container">
             <h2>Work Experience</h2>
             <div class="experience-item">
@@ -137,7 +137,7 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="projects" tabindex="0">
+    <section id="projects" class="projects hidden">
         <input type="checkbox" id="toggle-projects" class="toggle-checkbox">
         <label for="toggle-projects" class="expand-button">
             <div class="container">
@@ -178,7 +178,7 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="skills" tabindex="0">
+    <!-- <section id="skills" class="skills" tabindex="0">
         <div class="container">
             <h2>Technical Skills</h2>
             <ul>
@@ -192,10 +192,10 @@
                 <li>Scripting Languages: Bash</li>
             </ul>
         </div>
-    </section>
+    </section> -->
 
     <!-- Education Section -->
-    <section id="education" class="education" tabindex="0">
+    <!-- <section id="education" class="education" tabindex="0">
         <div class="container">
             <h2>Education</h2>
             <div class="education-item">
@@ -206,42 +206,46 @@
                     Computer Networks, Cryptography, Data Science, Database Management Systems</p>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- Contact Section -->
-    <section id="contact" class="contact" tabindex="0">
+    <section id="contact" class="contact hidden">
+        <h2>Contact</h2>
         <div class="container">
-            <h2>Contact</h2>
             <p>Feel free to reach out to me via email or through my social media profiles.</p>
             <p>Email: <a href="mailto:pauljose513@gmail.com">pauljose513@gmail.com</a></p>
             <p>LinkedIn: <a href="https://linkedin.com/in/paul-jose-016">linkedin.com/in/paul-jose-016</a></p>
             <p>GitHub: <a href="https://github.com/pauljose513">github.com/pauljose513</a></p>
+            
+              
         </div>
+        <!-- <footer class="footer">
+            <div class="container">
+                <p>&copy; 2024 Paul Jose. All Rights Reserved.</p>
+            </div>
+        </footer> -->
     </section>
 
     <!-- Resume Section -->
-    <section id="resume" class="resume" tabindex="0">
+    <!-- <section id="resume" class="resume" tabindex="0">
         <div class="container">
             <h2>Resume</h2>
-            <p>You can download my resume <a href="resume.pdf" download>here</a>.</p> <!-- Add your resume file -->
+            <p>You can download my resume <a href="resume.pdf" download>here</a>.</p>
         </div>
-    </section>
+    </section> -->
 
     <!-- References Section -->
-    <section id="references" class="references" tabindex="0">
+    <!-- <section id="references" class="references" tabindex="0">
         <div class="container">
             <h2>References</h2>
-            <p>Available upon request.</p> <!-- You can add more specific references if you have them -->
+            <p>Available upon request.</p>
         </div>
-    </section>
+    </section> -->
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2024 Paul Jose. All Rights Reserved.</p>
-        </div>
-    </footer>
-
+    
+<script src="./script.js"></script>
+<script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
 </body>
 
 </html>
