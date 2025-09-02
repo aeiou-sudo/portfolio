@@ -8,29 +8,34 @@
   <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
-  --bg-primary: #7a1414;           /* deep red background */
-  --bg-secondary: #5f0f0f;         /* darker red tone for sections */
-  --glass-bg: rgba(255,248,236,0.10); /* creamy translucent glass */
-  --glass-border: rgba(255,255,255,0.06);
-  --glass-shadow: rgba(0,0,0,0.45);
-  --text-primary: #fff8ee;         /* creamy white text */
-  --text-secondary: #fff1e0;       /* slightly warmer secondary text */
-  --text-tertiary: #ffe6cf;        /* tertiary muted cream */
-      --accent-blue: #007aff;          /* iOS Blue */
-      --accent-green: #34c759;         /* iOS Green */
-      --accent-red: #ff3b30;           /* iOS Red */
-      --accent-orange: #ff9500;        /* iOS Orange */
-      --accent-yellow: #ffcc00;        /* iOS Yellow */
-      --accent-purple: #af52de;        /* iOS Purple */
-      --accent-pink: #ff2d55;          /* iOS Pink */
-      --accent-teal: #5ac8fa;          /* iOS Teal */
-      --accent-gray: #8e8e93;          /* iOS Gray */
-      --gradient-primary: linear-gradient(135deg, #007aff 0%, #34c759 100%);
-      --gradient-secondary: linear-gradient(135deg, #af52de 0%, #ff2d55 100%);
-      --gradient-accent: linear-gradient(135deg, #007aff 0%, #5ac8fa 100%);
-      --gradient-warm: linear-gradient(135deg, #ff9500 0%, #ffcc00 100%);
-      --gradient-cool: linear-gradient(135deg, #5ac8fa 0%, #af52de 100%);
-      --gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%);
+      /* Strict two-color theme */
+      --primary-color: #FF0000; /* background red */
+      --text-color: #FFF8EE;    /* off-white text */
+
+      --bg-primary: var(--primary-color);
+      --bg-secondary: var(--primary-color);
+      --glass-bg: rgba(255, 248, 238, 0.08); /* translucent using text color */
+      --glass-border: rgba(255, 248, 238, 0.10);
+      --glass-shadow: rgba(255, 248, 238, 0.06);
+      --text-primary: var(--text-color);
+      --text-secondary: var(--text-color);
+      --text-tertiary: var(--text-color);
+      /* map all accents to the two allowed colors */
+      --accent-blue: var(--text-color);
+      --accent-green: var(--text-color);
+      --accent-red: var(--primary-color);
+      --accent-orange: var(--primary-color);
+      --accent-yellow: var(--primary-color);
+      --accent-purple: var(--text-color);
+      --accent-pink: var(--text-color);
+      --accent-teal: var(--text-color);
+      --accent-gray: var(--text-color);
+      --gradient-primary: var(--primary-color);
+      --gradient-secondary: var(--primary-color);
+      --gradient-accent: var(--text-color);
+      --gradient-warm: var(--primary-color);
+      --gradient-cool: var(--text-color);
+      --gradient-glass: var(--text-color);
       --border-radius: 20px;
       --border-radius-lg: 24px;
       --spacing-xs: 8px;
@@ -45,6 +50,31 @@
       --spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
+  /* Global overrides to strictly use the two colors */
+  body { background: var(--bg-primary); color: var(--text-primary); }
+
+    /* Ensure all text uses the off-white color */
+    h1,h2,h3,h4,h5,h6,p,li,a,th,td,div,span { color: var(--text-primary) !important; }
+
+    /* Replace decorative gradients with solid allowed colors */
+    .hero-name, .hero-role, .card b, .contact-header, .bootloader__logo {
+      background: none !important;
+      -webkit-background-clip: unset !important;
+      -webkit-text-fill-color: unset !important;
+      color: var(--text-primary) !important;
+    }
+
+    /* Buttons and links appear as glass but use allowed colors for text */
+    .contact-btn, .download-btn, .navbar a, .contact-links a, .tech span {
+      color: var(--text-primary) !important;
+      background: rgba(255,255,255,0.03) !important; /* subtle glass using white */
+      border-color: rgba(255,255,255,0.06) !important;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.18) !important;
+    }
+
+    /* SVG gradients and stops use allowed colors */
+    svg stop { stop-color: var(--text-primary) !important; }
+
     * {
       box-sizing: border-box;
     }
@@ -53,12 +83,10 @@
       scroll-behavior: smooth;
     }
 
-    body {
+  body {
       margin: 0;
       padding: 0;
       font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: var(--bg-primary);
-      color: var(--text-primary);
       font-size: 16px;
       line-height: 1.6;
       min-height: 100vh;
@@ -180,7 +208,7 @@
     }
 
     .contact-btn.glass {
-      color: #000000; /* White text for a premium look */
+  color: var(--text-primary); /* use theme off-white */
       font-weight: 500;
       text-decoration: none;
       padding: 10px 20px; /* Larger padding for a more substantial drop */
@@ -556,7 +584,7 @@
       box-shadow: 0 6px 18px rgba(0,122,255,0.12);
     } */
     .tech .glass{
-      color: #000000; /* White text for a premium look */
+      color: var(--text-primary);
       font-weight: 500;
       text-decoration: none;
       padding: 7px 14px; /* Larger padding for a more substantial drop */
@@ -634,10 +662,7 @@
       pointer-events: none;
     }
 
-    @keyframes rotate {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
+  /* removed unused rotate animation */
 
     .statement > * {
       position: relative;
@@ -689,7 +714,7 @@
     }
 
     .contact-links a {
-      color: rgb(0, 0, 0);
+      color: var(--text-primary);
       background-color: #00000000;
       backdrop-filter: blur(1.5px) saturate(180%); /* Stronger blur and saturation */
       -webkit-backdrop-filter: blur(1.5px) saturate(180%);
@@ -846,7 +871,7 @@
 }
 
 .navbar a {
-  color: #000000; /* White text for a premium look */
+  color: var(--text-primary);
   font-weight: 500;
   text-decoration: none;
   padding: 7px 14px; /* Larger padding for a more substantial drop */
