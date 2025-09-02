@@ -1,5 +1,6 @@
 :root {
-  --bg: #000;
+  /* Ash (dark) theme defaults */
+  --bg: #0c0606; /* ash / charcoal instead of pure black */
   --text: #fff;
   --accent: #fff;
   --header-h: 40vh; /* header ~40% */
@@ -181,12 +182,17 @@ body.light-theme .theme-toggle .icon-moon { opacity: 0; transform: scale(0.6) ro
 .card-preview .preview-text {
   display: -webkit-box;
   -webkit-line-clamp: 4; /* show up to 4 lines */
+  /* Standard property for newer browsers / linters */
+  line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
   hyphens: auto;
   margin: 0 0 0.6rem 0;
   text-align: center; /* center preview text */
+}
+.card-preview {
+    font-size: clamp(0.75rem, 2vw, 1rem);
 }
 .view-more {
   background: transparent;
@@ -228,7 +234,7 @@ body.light-theme .theme-toggle .icon-moon { opacity: 0; transform: scale(0.6) ro
   .edu-meta { font-size: 0.9rem; }
   /* Ensure hero brief scales and its text wraps properly on very small screens */
   .hero-brief { padding: 0.75rem; font-size: 0.9rem; }
-  .card-preview .preview-text { -webkit-line-clamp: 3; }
+  .card-preview .preview-text { -webkit-line-clamp: 3; line-clamp: 3; }
   .view-more { padding: 0.4rem 0.6rem; }
 }
 
@@ -324,7 +330,8 @@ body.light-theme .theme-toggle .icon-moon { opacity: 0; transform: scale(0.6) ro
 
 /* Theme override: light */
 body.light-theme {
-  --bg: #fff;
+  /* Light theme: use an off-white rather than pure white */
+  --bg: #fbeed5; /* off-white */
   --text: #000;
   --accent: #000;
 }
@@ -369,3 +376,42 @@ body, .theme-toggle, .column {
 
 /* Accessibility: visually hidden but still focusable */
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+/* Floating action button (FAB) stack */
+.fab-stack {
+  position: fixed;
+  right: 1rem;
+  bottom: 1.25rem;
+  display: flex;
+  flex-direction: column-reverse; /* stack visually with the first link at bottom */
+  gap: 0.6rem;
+  z-index: 2000;
+}
+.fab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  background: var(--muted-bg);
+  color: var(--text);
+  border: 1px solid var(--muted);
+  text-decoration: none;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.28);
+  transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+}
+.fab svg { width: 18px; height: 18px; display: block; }
+.fab:hover, .fab:focus { transform: translateY(-3px) scale(1.03); box-shadow: 0 10px 24px rgba(0,0,0,0.32); outline: none; }
+.fab:active { transform: translateY(-1px) scale(0.99); }
+
+/* Make touch targets larger on small screens */
+@media (max-width: 480px) {
+  .fab { width: 52px; height: 52px; }
+  .fab-stack { right: 0.8rem; bottom: 1rem; }
+}
+
+/* Accessibility: ensure fab stack does not cover important content on small screens; shift left if necessary */
+@media (max-width: 360px) {
+  .fab-stack { right: 0.5rem; }
+}
