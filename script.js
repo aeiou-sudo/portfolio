@@ -82,6 +82,9 @@ const Popup = (() => {
     popup.appendChild(closeBtn);
 
     overlay.appendChild(popup);
+    // prevent body scroll while popup is visible, restoring previous value on close
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
     document.body.appendChild(overlay);
 
     // Allow CSS transition to play
@@ -106,6 +109,8 @@ const Popup = (() => {
       overlay.classList.remove('is-visible');
       // remove listeners
       document.removeEventListener('keydown', onKey);
+      // restore body overflow
+      document.body.style.overflow = prevOverflow;
       // allow animation then remove
       overlay.addEventListener('transitionend', function onEnd(e) {
         if (e.propertyName === 'opacity') {

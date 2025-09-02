@@ -250,13 +250,18 @@ body {
 
 /* Small screens: stack columns within the same content area (no page scroll) */
 @media (max-width: 768px) {
+  /* Allow page-level scrolling on small screens when content exceeds the viewport */
+  body { overflow: auto; height: auto; }
+  /* Let the main content size naturally rather than forcing a 60vh block */
+  .site-main { flex: 1 1 auto; height: auto; }
+  .site-header { height: auto; flex: 0 0 auto; padding-bottom: 0.5rem; }
   .content-columns { flex-direction: column; }
-  /* Each column gets limited height (keeps total within viewport). Allow internal scrolling if content is long. */
+  /* Columns grow naturally; let the page scroll instead of internal scrolling */
   .column {
-    height: calc(var(--content-h) / 3);
-    overflow: auto;
+    height: auto;
+    max-height: none;
+    overflow: visible;
     padding: 0.75rem;
-    -webkit-overflow-scrolling: touch;
   }
 }
 
