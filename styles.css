@@ -78,6 +78,18 @@ body {
   border: 1px solid rgba(255,255,255,0.08);
   min-height: 0; /* allow flex children to size correctly */
   text-align: center;
+  border-radius: 20px;
+  padding: 20px;
+  margin: 10px;
+  backdrop-filter: blur(10px);            /* Frosted glass */
+  -webkit-backdrop-filter: blur(10px);    /* Safari support */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+
+  /* Border for extra glass look */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+
+  /* Responsive content */
+  text-align: center;
 }
 
 /* Small screens: stack columns within the same content area (no page scroll) */
@@ -103,3 +115,4 @@ body, .theme-toggle, .column {
 
 /* Accessibility helpers */
 .column:focus { outline: 2px solid; outline-offset: 3px; }
+
