@@ -743,6 +743,44 @@
       header {
         padding: var(--spacing-xl) var(--spacing-md);
       }
+
+      /* Center hero and text content on small screens */
+      header, .hero-container, .hero-name, .hero-role {
+        text-align: center;
+      }
+
+      .hero-summary {
+        text-align: center; /* override left-align for mobile */
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-summary-text {
+        display: inline-block;
+        text-align: center;
+      }
+
+      /* Stack skill columns and remove fixed min-width to allow centering */
+      #skills > div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+      }
+
+      #skills > div > div {
+        min-width: 0 !important;
+        width: 100%;
+        max-width: 520px;
+        text-align: center !important;
+      }
+
+      /* Make navbar less tall on mobile and more compact */
+      .navbar {
+        top: 12px;
+        gap: 12px;
+        padding: 6px 8px;
+      }
     }
 
     @media (max-width: 480px) {
