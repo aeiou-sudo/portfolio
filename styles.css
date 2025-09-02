@@ -133,13 +133,23 @@ body {
   width: 100%;
   text-align: left;
 }
-.card-education h3 { margin: 0 0 0.5rem 0; font-size: 1.1rem; }
+.card-education h3 { margin: 0 0 0.5rem 0; font-size: 1.1rem; text-align: center; }
 .card-education .edu-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.75rem; }
 .card-education .edu-list li { background: transparent; padding: 0.5rem 0; }
 .card-education .edu-meta { color: rgba(255,255,255,0.7); font-size: 0.95rem; margin-top: 0.25rem; }
 
+/* Experience card inside a column */
+.card-experience {
+  width: 100%;
+  text-align: left;
+}
+.card-experience h3 { margin: 0 0 0.5rem 0; font-size: 1.1rem; text-align: center; }
+.card-experience .exp-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.75rem; }
+.card-experience .exp-list li { background: transparent; padding: 0.5rem 0; }
+.card-experience .exp-meta { color: rgba(255,255,255,0.7); font-size: 0.95rem; margin-top: 0.25rem; }
+
 /* Preview block shown on cards: clamp long text neatly */
-.card-preview { width: 100%; text-align: left; }
+.card-preview { width: 100%; text-align: center; }
 .card-preview .preview-text {
   display: -webkit-box;
   -webkit-line-clamp: 4; /* show up to 4 lines */
@@ -148,10 +158,11 @@ body {
   text-overflow: ellipsis;
   hyphens: auto;
   margin: 0 0 0.6rem 0;
+  text-align: center; /* center preview text */
 }
 .view-more {
   background: transparent;
-  border: 1px solid var(--muted);
+  border: 1px solid currentColor;
   padding: 0.35rem 0.6rem;
   border-radius: 8px;
   font-size: 0.9rem;
@@ -159,11 +170,7 @@ body {
   color: var(--text);
   transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
 }
-.view-more:hover, .view-more:focus {
-  background: var(--muted-bg);
-  border-color: var(--text);
-  outline: none;
-}
+.card-preview h3 { margin-top: 0; margin-bottom: 0.4rem; text-align: center; }
 
 /* Keep full content hidden in normal layout; popup will source this HTML */
 .card-full { display: none; }
@@ -199,7 +206,7 @@ body {
 
 /* Projects card styles */
 .card-projects { width: 100%; text-align: left; }
-.card-projects h3 { margin: 0 0 0.5rem 0; font-size: 1.1rem; }
+.card-projects h3 { margin: 0 0 0.5rem 0; font-size: 1.1rem; text-align: center; }
 .proj-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.75rem; }
 .proj-list > li { padding: 0.4rem 0; }
 .proj-meta { color: rgba(255,255,255,0.7); font-size: 0.95rem; margin-top: 0.25rem; }
