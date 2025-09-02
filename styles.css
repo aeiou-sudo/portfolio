@@ -49,6 +49,20 @@ body {
   position: relative; /* create stacking context for hero children */
 }
 
+/* Highlight the small 'About Me' label inside the hero so it stands out */
+.hero-about-me {
+  color: var(--accent);
+  /* background: var(--muted-bg); */
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px; /* pill */
+  font-weight: 700;
+  font-size: clamp(0.85rem, 1.1vw, 1rem);
+  letter-spacing: 0.2px;
+  display: inline-block;
+}
+
+.hero-about-me p { margin: 0; color: inherit; }
+
 .hero-name { margin: 0; font-size: clamp(1.5rem, 3.5vw, 2.5rem); }
 .hero-title { margin: 0.25rem 0 0; font-size: clamp(1rem, 2.5vw, 1.25rem); opacity: 0.9; }
 

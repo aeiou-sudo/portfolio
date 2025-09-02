@@ -129,20 +129,27 @@ const Popup = (() => {
       const container = document.querySelector(CLICK_SELECTOR);
       if (!container) return;
 
-      container.addEventListener('click', (ev) => {
-        const col = ev.target.closest('.column');
-        if (!col || !container.contains(col)) return;
-        open(col);
+      // Attach click handlers only to 'View more' buttons inside columns
+      const buttons = container.querySelectorAll('.view-more');
+      buttons.forEach((btn) => {
+        btn.addEventListener('click', (ev) => {
+          ev.stopPropagation();
+          const col = btn.closest('.column');
+          if (!col) return;
+          // mark button as pressed for accessibility
+          btn.setAttribute('aria-pressed', 'true');
+          const popupHandle = open(col);
+          // when popup closes, restore the button state
+          if (popupHandle && typeof popupHandle.close === 'function') {
+            const origClose = popupHandle.close;
+            // wrap close to also reset aria-pressed
+            popupHandle.close = () => {
+              try { btn.setAttribute('aria-pressed', 'false'); } catch (e) {}
+              origClose();
+            };
+          }
+        });
       });
-
-      // Allow touch taps (some browsers synthesize click already)
-      container.addEventListener('touchstart', (ev) => {
-        const col = ev.target.closest('.column');
-        if (!col || !container.contains(col)) return;
-        // small delay to avoid double triggering
-        ev.preventDefault();
-        open(col);
-      }, { passive: false });
     });
   }
 
