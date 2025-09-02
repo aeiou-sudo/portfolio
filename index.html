@@ -8,14 +8,14 @@
   <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-primary: #f2f2f7;           /* iOS system grouped background */
-      --bg-secondary: #ffffff;         /* iOS system background */
-      --glass-bg: rgba(255,255,255,0.85); /* More opaque for contrast */
-      --glass-border: rgba(60,60,67,0.18);
-      --glass-shadow: rgba(60,60,67,0.10);
-      --text-primary: #111214;         /* Darker for contrast */
-      --text-secondary: #222326;       /* Slightly darker */
-      --text-tertiary: #636366;        /* iOS tertiary label */
+  --bg-primary: #7a1414;           /* deep red background */
+  --bg-secondary: #5f0f0f;         /* darker red tone for sections */
+  --glass-bg: rgba(255,248,236,0.10); /* creamy translucent glass */
+  --glass-border: rgba(255,255,255,0.06);
+  --glass-shadow: rgba(0,0,0,0.45);
+  --text-primary: #fff8ee;         /* creamy white text */
+  --text-secondary: #fff1e0;       /* slightly warmer secondary text */
+  --text-tertiary: #ffe6cf;        /* tertiary muted cream */
       --accent-blue: #007aff;          /* iOS Blue */
       --accent-green: #34c759;         /* iOS Green */
       --accent-red: #ff3b30;           /* iOS Red */
@@ -66,53 +66,7 @@
       position: relative;
     }
 
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: 
-        radial-gradient(circle at 20% 80%, rgba(84, 82, 190, 0.3) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(245, 73, 174, 0.3) 0%, transparent 50%),
-        radial-gradient(circle at 40% 40%, rgba(76, 174, 240, 0.2) 0%, transparent 50%);
-      animation: liquidMove 30s ease-in-out infinite;
-      z-index: -2;
-    }
-
-    body::after {
-      content: '';
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: 
-        radial-gradient(circle at 60% 70%, rgba(190, 146, 81, 0.2) 0%, transparent 50%),
-        radial-gradient(circle at 90% 10%, rgba(82, 180, 141, 0.2) 0%, transparent 50%);
-      animation: liquidMove 20s ease-in-out infinite reverse;
-      z-index: -1;
-    }
-
-    @keyframes liquidMove {
-      0%, 100% { 
-        transform: scale(1) rotate(0deg);
-        opacity: 0.6;
-      }
-      25% { 
-        transform: scale(1.1) rotate(90deg);
-        opacity: 0.8;
-      }
-      50% { 
-        transform: scale(0.9) rotate(180deg);
-        opacity: 0.4;
-      }
-      75% { 
-        transform: scale(1.05) rotate(270deg);
-        opacity: 0.7;
-      }
-    }
+  /* Background animations removed for a minimal, clean presentation. */
 
     .glass {
       background: var(--glass-bg);
@@ -653,6 +607,7 @@
       background: rgba(255, 255, 255, 0.05);
     }
 
+    /* Decorative rotating gradient removed for minimalism; keep statement static. */
     .statement::before {
       content: '';
       position: absolute;
@@ -660,8 +615,8 @@
       left: -50%;
       width: 200%;
       height: 200%;
-      background: conic-gradient(transparent, rgba(79, 172, 254, 0.1), transparent);
-      animation: rotate 15s linear infinite;
+      background: transparent; /* no rotating background */
+      pointer-events: none;
     }
 
     @keyframes rotate {
@@ -759,37 +714,7 @@
       box-shadow: 0 15px 35px rgba(247, 112, 154, 0.3);
     }
 
-    .floating-elements {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: -1;
-    }
-
-    .floating-element {
-      position: absolute;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      background: var(--gradient-accent);
-      opacity: 0.1;
-      animation: float 8s ease-in-out infinite;
-    }
-
-    .floating-element:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
-    .floating-element:nth-child(2) { top: 20%; right: 10%; animation-delay: 2s; }
-    .floating-element:nth-child(3) { bottom: 20%; left: 20%; animation-delay: 4s; }
-    .floating-element:nth-child(4) { bottom: 10%; right: 20%; animation-delay: 6s; }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0px) scale(1); }
-      25% { transform: translateY(-20px) scale(1.1); }
-      50% { transform: translateY(-40px) scale(0.9); }
-      75% { transform: translateY(-20px) scale(1.05); }
-    }
+  /* Floating background elements removed to reduce distractions. */
 
     @media (max-width: 768px) {
       :root {
@@ -974,9 +899,104 @@
     transform: translateY(-3px); /* Subtle up-down movement */
   }
 }
+
+    /* Bootloader styles */
+    .bootloader {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(180deg, rgba(242,242,247,0.95), rgba(255,255,255,0.75));
+      z-index: 9999;
+      -webkit-backdrop-filter: blur(6px) saturate(140%);
+      backdrop-filter: blur(6px) saturate(140%);
+      transition: opacity 420ms var(--spring), visibility 420ms var(--spring);
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .bootloader[aria-hidden="true"] {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .bootloader__inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      padding: 22px 28px;
+      border-radius: 16px;
+      box-shadow: 0 10px 40px rgba(16,24,40,0.12);
+      transform: translateY(0);
+      transition: transform 420ms var(--spring), opacity 300ms ease;
+      backdrop-filter: blur(6px) saturate(160%);
+    }
+
+    .bootloader__logo {
+      font-weight: 800;
+      font-size: clamp(1.05rem, 3.2vw, 1.4rem);
+      letter-spacing: 0.6px;
+      color: var(--text-primary);
+      background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .bootloader__spinner {
+      width: 64px;
+      height: 64px;
+      border-radius: 999px;
+      position: relative;
+      box-shadow: inset 0 0 0 4px rgba(0,0,0,0.05);
+      background: conic-gradient(var(--accent-blue), var(--accent-teal), var(--accent-purple), var(--accent-blue));
+      -webkit-mask: radial-gradient(farthest-side, transparent 60%, black 62%);
+      mask: radial-gradient(farthest-side, transparent 60%, black 62%);
+      animation: boot-spin 1.6s linear infinite;
+    }
+
+    @keyframes boot-spin {
+      to { transform: rotate(1turn); }
+    }
+
+    .bootloader__hint {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      opacity: 0.95;
+    }
+
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .bootloader__spinner { animation: none; }
+      .bootloader { transition: none; }
+      .bootloader__inner { transition: none; }
+    }
+
+    /* Smaller screens */
+    @media (max-width: 520px) {
+      .bootloader__inner { padding: 14px 16px; gap:10px; }
+      .bootloader__spinner { width: 46px; height: 46px; }
+    }
+
+    /* High DPI adaptation */
+    @media (min-resolution: 2dppx) {
+      .bootloader__spinner { filter: saturate(120%); }
+    }
   </style>
 </head>
 <body>
+  <!-- Bootloader overlay: responsive, accessible, and adaptive to display types -->
+  <div id="bootloader" class="bootloader" role="status" aria-live="polite" aria-label="Loading content">
+    <div class="bootloader__inner glass" aria-hidden="false">
+      <div class="bootloader__logo" aria-hidden="true">Paul Jose</div>
+      <div class="bootloader__spinner" aria-hidden="true"></div>
+      <div class="bootloader__hint" aria-hidden="true">Preparing portfolio…</div>
+    </div>
+  </div>
+
   <nav class="glass navbar">
     <a href="#education">Education</a>
     <a href="#experience">Experience</a>
@@ -985,12 +1005,7 @@
     <a href="#statement">About</a>
     <a href="#contact">Contact</a>
   </nav>
-  <div class="floating-elements">
-    <div class="floating-element"></div>
-    <div class="floating-element"></div>
-    <div class="floating-element"></div>
-    <div class="floating-element"></div>
-  </div>
+  <!-- background decorations removed for minimal design -->
   
   <header>
     <div class="hero-container">
@@ -1270,4 +1285,62 @@
     </section></a>
   </main>
 </body>
+<script>
+  (function(){
+    const loader = document.getElementById('bootloader');
+    const spinner = loader && loader.querySelector('.bootloader__spinner');
+    const MIN_MS = 600; // minimum visible time for the loader
+    const MAX_MS = 5000; // fail-safe maximum
+    const start = Date.now();
+
+    function adaptForDPR(){
+      try{
+        const dpr = window.devicePixelRatio || 1;
+        if(spinner){
+          const base = 64;
+          const size = Math.round(base * Math.min(1.6, Math.max(1, dpr)));
+          spinner.style.width = size + 'px';
+          spinner.style.height = size + 'px';
+        }
+      }catch(e){/*ignore*/}
+    }
+
+    function hideLoader(){
+      if(!loader) return;
+      loader.setAttribute('aria-hidden','true');
+      // remove from accessibility tree after animation
+      setTimeout(()=> loader.style.display = 'none', 520);
+    }
+
+    function readyToHide(){
+      const elapsed = Date.now() - start;
+      const wait = Math.max(0, MIN_MS - elapsed);
+      setTimeout(hideLoader, wait);
+    }
+
+    // Wait for fonts + window load when available; otherwise fallback
+    const fontReady = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
+
+    Promise.all([fontReady, new Promise(resolve => {
+      if(document.readyState === 'complete') return resolve();
+      window.addEventListener('load', resolve, {once:true, capture:true});
+      // also resolve on DOMContentLoaded as a faster heuristic
+      window.addEventListener('DOMContentLoaded', resolve, {once:true, capture:true});
+    })])
+    .then(readyToHide)
+    .catch(readyToHide);
+
+    // Timeout safety: ensure loader never blocks beyond MAX_MS
+    setTimeout(hideLoader, MAX_MS);
+
+    // Adapt UI for display
+    adaptForDPR();
+    window.matchMedia('(resolution)').addEventListener?.('change', adaptForDPR);
+
+    // If user prefers reduced motion, hide spinner animation sooner
+    if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      if(spinner) spinner.style.animation = 'none';
+    }
+  })();
+</script>
 </html>
