@@ -207,7 +207,7 @@ body.light-theme .theme-toggle .icon-moon { opacity: 0; transform: scale(0.6) ro
 .card-preview h3 { margin-top: 0; margin-bottom: 0.4rem; text-align: center; }
 
 /* Keep full content hidden in normal layout; popup will source this HTML */
-.card-full { display: none; backdrop-filter: blur(100px); -webkit-backdrop-filter: blur(100px); }
+.card-full { display: none; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
 
 /* Popup close button */
 .popup-close {
