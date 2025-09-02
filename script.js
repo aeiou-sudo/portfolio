@@ -6,6 +6,12 @@ const Theme = (() => {
     document.body.classList.toggle('light-theme', Boolean(isLight));
     const btn = document.getElementById(TOGGLE_ID);
     if (btn) btn.setAttribute('aria-pressed', String(Boolean(isLight)));
+    if (btn) {
+      btn.setAttribute('aria-label', isLight ? 'Switch to dark mode' : 'Switch to light mode');
+      // trigger a brief animation class
+      btn.classList.add('is-animating');
+      setTimeout(() => btn.classList.remove('is-animating'), 350);
+    }
   }
 
   function load() {

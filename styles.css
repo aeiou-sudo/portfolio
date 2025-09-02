@@ -86,6 +86,25 @@ body {
 }
 .theme-toggle:focus { outline: 2px solid; outline-offset: 2px; }
 
+/* Icon styles inside the toggle */
+.theme-toggle { display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; }
+.theme-toggle .icon { display: inline-flex; width: 1.25rem; height: 1.25rem; align-items: center; justify-content: center; color: var(--text); }
+.theme-toggle .icon svg { display: block; width: 100%; height: 100%; }
+
+/* Default: show moon (dark mode) when body has no light-theme; show sun when light-theme present */
+.theme-toggle .icon-sun { opacity: 0; transform: scale(0.6) rotate(-20deg); transition: opacity 320ms ease, transform 320ms cubic-bezier(.2,.8,.2,1); }
+.theme-toggle .icon-moon { opacity: 1; transform: scale(1) rotate(0deg); transition: opacity 320ms ease, transform 320ms cubic-bezier(.2,.8,.2,1); }
+body.light-theme .theme-toggle .icon-sun { opacity: 1; transform: scale(1) rotate(0deg); }
+body.light-theme .theme-toggle .icon-moon { opacity: 0; transform: scale(0.6) rotate(20deg); }
+
+/* small animation trigger class to add a rotation when toggled */
+.theme-toggle.is-animating { transition: transform 300ms ease; transform: rotate(12deg); }
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .theme-toggle .icon, .theme-toggle { transition: none !important; transform: none !important; }
+}
+
 /* Main content area */
 .site-main {
   flex: 0 0 var(--content-h);
@@ -147,6 +166,15 @@ body {
 .card-experience .exp-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.75rem; }
 .card-experience .exp-list li { background: transparent; padding: 0.5rem 0; }
 .card-experience .exp-meta { color: rgba(255,255,255,0.7); font-size: 0.95rem; margin-top: 0.25rem; }
+.card-experience .role-list { 
+    color: rgba(255,255,255,0.7); 
+    list-style: none; 
+    margin: 0; 
+    padding: 0; 
+    display: grid; 
+    gap: 0.75rem; 
+    padding-left: 1.5rem; /* add tab/indent before list items */
+}
 
 /* Preview block shown on cards: clamp long text neatly */
 .card-preview { width: 100%; text-align: center; }
@@ -173,7 +201,7 @@ body {
 .card-preview h3 { margin-top: 0; margin-bottom: 0.4rem; text-align: center; }
 
 /* Keep full content hidden in normal layout; popup will source this HTML */
-.card-full { display: none; }
+.card-full { display: none; backdrop-filter: blur(100px); -webkit-backdrop-filter: blur(100px); }
 
 /* Popup close button */
 .popup-close {
@@ -207,11 +235,19 @@ body {
 /* Projects card styles */
 .card-projects { width: 100%; text-align: left; }
 .card-projects h3 { margin: 0 0 0.5rem 0; font-size: 1.1rem; text-align: center; }
-.proj-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.75rem; }
-.proj-list > li { padding: 0.4rem 0; }
-.proj-meta { color: rgba(255,255,255,0.7); font-size: 0.95rem; margin-top: 0.25rem; }
-.proj-bullets { margin: 0.5rem 0 0 1rem; padding-left: 1rem; list-style: disc; }
-.proj-bullets li { margin: 0.35rem 0; font-size: 0.95rem; overflow-wrap: anywhere; }
+.card-projects .proj-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.75rem; }
+.card-projects .proj-list li { background: transparent; padding: 0.5rem 0; }
+.card-projects .proj-meta { color: rgba(255,255,255,0.7); font-size: 0.95rem; margin-top: 0.25rem; }
+.card-projects .proj-bullets { 
+    color: rgba(255,255,255,0.7); 
+    list-style: none; 
+    margin: 0; 
+    padding: 0; 
+    display: grid; 
+    gap: 0.75rem; 
+    padding-left: 1.5rem; /* add tab/indent before list items */
+}
+
 
 @media (max-width: 480px) {
   .proj-bullets li { font-size: 0.92rem; }
@@ -330,3 +366,6 @@ body, .theme-toggle, .column {
   word-break: break-word;
   hyphens: auto;
 }
+
+/* Accessibility: visually hidden but still focusable */
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
