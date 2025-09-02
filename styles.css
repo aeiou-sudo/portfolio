@@ -6,6 +6,8 @@
   --content-h: 60vh; /* content ~60% */
   --gap: 1rem;
   --radius: 8px;
+  --muted: rgba(255,255,255,0.18);
+  --muted-bg: rgba(255,255,255,0.03);
 }
 
 /* Base reset */
@@ -34,9 +36,26 @@ body {
   padding: 1rem;
 }
 
-.hero { text-align: center; }
+.hero {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem; /* tighten spacing between hero elements */
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  position: relative; /* create stacking context for hero children */
+}
+
 .hero-name { margin: 0; font-size: clamp(1.5rem, 3.5vw, 2.5rem); }
 .hero-title { margin: 0.25rem 0 0; font-size: clamp(1rem, 2.5vw, 1.25rem); opacity: 0.9; }
+
+/* Reset default margins inside hero to avoid large gaps */
+.hero h1, .hero p, .hero > div { margin: 0; padding: 0; }
+.hero-name, .hero-title, .hero-about-me { margin: 0; }
+.hero-name h1 { line-height: 1.05; }
 
 /* Theme toggle */
 .theme-toggle {
@@ -80,7 +99,7 @@ body {
   text-align: center;
   border-radius: 20px;
   padding: 20px;
-  margin: 10px;
+  /* removed external margin to avoid overlap with header; spacing handled by container gap */
   backdrop-filter: blur(10px);            /* Frosted glass */
   -webkit-backdrop-filter: blur(10px);    /* Safari support */
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
@@ -90,12 +109,155 @@ body {
 
   /* Responsive content */
   text-align: center;
+  min-width: 0; /* allow flex items to shrink without overflowing */
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* Education card inside a column */
+.card-education {
+  width: 100%;
+  text-align: left;
+}
+.card-education h3 { margin: 0 0 0.5rem 0; font-size: 1.1rem; }
+.card-education .edu-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.75rem; }
+.card-education .edu-list li { background: transparent; padding: 0.5rem 0; }
+.card-education .edu-meta { color: rgba(255,255,255,0.7); font-size: 0.95rem; margin-top: 0.25rem; }
+
+/* Preview block shown on cards: clamp long text neatly */
+.card-preview { width: 100%; text-align: left; }
+.card-preview .preview-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 4; /* show up to 4 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  hyphens: auto;
+  margin: 0 0 0.6rem 0;
+}
+.view-more {
+  background: transparent;
+  border: 1px solid var(--muted);
+  padding: 0.35rem 0.6rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  color: var(--text);
+  transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
+}
+.view-more:hover, .view-more:focus {
+  background: var(--muted-bg);
+  border-color: var(--text);
+  outline: none;
+}
+
+/* Keep full content hidden in normal layout; popup will source this HTML */
+.card-full { display: none; }
+
+/* Popup close button */
+.popup-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: transparent;
+  border: 1px solid var(--muted);
+  color: inherit;
+  padding: 0.35rem 0.6rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+@media (max-width: 480px) {
+  .popup-card {
+    width: calc(100vw - 2rem);
+    max-height: calc(100vh - 2rem);
+    border-radius: 12px;
+    padding: 1rem;
+  }
+  .overlay { padding: 0.5rem; }
+  .card-education h3 { font-size: 1rem; }
+  .edu-meta { font-size: 0.9rem; }
+  /* Ensure hero brief scales and its text wraps properly on very small screens */
+  .hero-brief { padding: 0.75rem; font-size: 0.9rem; }
+  .card-preview .preview-text { -webkit-line-clamp: 3; }
+  .view-more { padding: 0.4rem 0.6rem; }
+}
+
+/* Projects card styles */
+.card-projects { width: 100%; text-align: left; }
+.card-projects h3 { margin: 0 0 0.5rem 0; font-size: 1.1rem; }
+.proj-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.75rem; }
+.proj-list > li { padding: 0.4rem 0; }
+.proj-meta { color: rgba(255,255,255,0.7); font-size: 0.95rem; margin-top: 0.25rem; }
+.proj-bullets { margin: 0.5rem 0 0 1rem; padding-left: 1rem; list-style: disc; }
+.proj-bullets li { margin: 0.35rem 0; font-size: 0.95rem; overflow-wrap: anywhere; }
+
+@media (max-width: 480px) {
+  .proj-bullets li { font-size: 0.92rem; }
+  .proj-meta { font-size: 0.9rem; }
+}
+
+/* Overlay used when a card is expanded */
+.overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 1200;
+  opacity: 0;
+  transition: opacity 200ms ease;
+  padding: 1rem;
+}
+.overlay.is-visible { opacity: 1; }
+
+/* Popup container that holds a cloned card */
+.popup-card {
+  background: rgba(255,255,255,0.03);
+  color: inherit;
+  border-radius: 14px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.45);
+  transform: scale(0.6);
+  transition: transform 260ms cubic-bezier(.2,.9,.2,1), opacity 200ms ease;
+  opacity: 0;
+  max-width: min(92vw, 1100px);
+  width: min(92vw, 1100px);
+  max-height: 90vh;
+  overflow: auto;
+  padding: 1.25rem;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+/* When overlay visible, show popup at full size */
+.overlay.is-visible .popup-card {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* Mobile tuning: ensure popup fits and no viewport scroll */
+@media (max-width: 480px) {
+  .popup-card {
+    width: calc(100vw - 2rem);
+    max-height: calc(100vh - 2rem);
+    border-radius: 12px;
+    padding: 1rem;
+  }
+  .overlay { padding: 0.5rem; }
 }
 
 /* Small screens: stack columns within the same content area (no page scroll) */
 @media (max-width: 768px) {
   .content-columns { flex-direction: column; }
-  .column { height: calc(var(--content-h) / 3); }
+  /* Each column gets limited height (keeps total within viewport). Allow internal scrolling if content is long. */
+  .column {
+    height: calc(var(--content-h) / 3);
+    overflow: auto;
+    padding: 0.75rem;
+    -webkit-overflow-scrolling: touch;
+  }
 }
 
 /* Theme override: light */
@@ -104,6 +266,15 @@ body.light-theme {
   --text: #000;
   --accent: #000;
 }
+
+/* light-theme muted overrides */
+body.light-theme {
+  --muted: rgba(0,0,0,0.12);
+  --muted-bg: rgba(0,0,0,0.04);
+}
+
+/* Light-theme overlay variant */
+body.light-theme .overlay { background: rgba(0,0,0,0.35); }
 
 /* Smooth transitions for theme changes */
 body, .theme-toggle, .column {
@@ -116,3 +287,20 @@ body, .theme-toggle, .column {
 /* Accessibility helpers */
 .column:focus { outline: 2px solid; outline-offset: 3px; }
 
+/* Small accessibility visual */
+.popup-card:focus { outline: 3px solid rgba(255,255,255,0.12); outline-offset: 4px; }
+
+.hero-brief{
+    font-size: clamp(0.85rem, 2vw, 1rem);
+    width: 80vw;
+    max-width: 80vw;
+    /* padding-bottom: .8 rem; */
+    line-height: 1.4;
+}
+
+/*.hero-brief and .card-education now get safe wrapping */
+.hero-brief, .card-education, .card-education .edu-meta, .card-education h3 {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  hyphens: auto;
+}

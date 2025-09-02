@@ -9,8 +9,18 @@
 <body>
   <header class="site-header" role="banner">
     <div class="hero">
-      <h1 class="hero-name">Your Name</h1>
-      <p class="hero-title">Your Title</p>
+      <div class="hero-name">
+      <h1>Paul Jose</h1>
+      </div>
+      <div class="hero-title">
+      <p>AI/ML Researcher</p>
+      </div>
+      <div class="hero-about-me">
+      <p>About Me</p>
+      </div>
+      <div class="hero-brief">
+      <p>I am Paul Jose, pursuing my M.Tech in Computer Science and Engineering at MACE with a focus on Artificial Intelligence and Machine Learning. My work explores deep learning, explainable AI, and their applications in areas like healthcare, networks, and cybersecurity. Through projects on EEG classification, predictive modeling, and optimization, I aim to design AI systems that are both impactful and interpretable.</p>
+      </div>
     </div>
 
     <button id="theme-toggle" class="theme-toggle" aria-pressed="false" aria-label="Toggle theme">Toggle</button>
@@ -18,9 +28,103 @@
 
   <main class="site-main" role="main">
     <section class="content-columns" aria-label="Main content">
-      <article class="column" id="col-1">Column 1</article>
-      <article class="column" id="col-2">Column 2</article>
-      <article class="column" id="col-3">Column 3</article>
+      <article class="column" id="col-1">
+        <!-- Preview shown on the card (truncated) -->
+        <div class="card-preview">
+          <h3>Education</h3>
+          <p class="preview-text">M.Tech — Computer Science and Engineering, Mar Athanasius College of Engineering (Sept 2024 – Sept 2026) • CGPA: 8.29/10
+          <br>B.Tech — Computer Science and Engineering, APJ Abdul Kalam Technological University (Aug 2018 – Aug 2022) • CGPA: 7.43/10</p>
+          <button class="view-more" aria-label="View full education">View more</button>
+        </div>
+
+        <!-- Full content kept in DOM and hidden; used by popup when opened -->
+        <div class="card-full" hidden>
+          <div class="card-education">
+            <h3>Education</h3>
+            <ul class="edu-list">
+              <li>
+                <strong>M.Tech — Computer Science and Engineering</strong>
+                <div class="edu-meta">Mar Athanasius College of Engineering, Kerala • <time datetime="2024-09">Sept 2024</time> – <time datetime="2026-09">Sept 2026</time> • CGPA: 8.29/10</div>
+              </li>
+              <li>
+                <strong>B.Tech — Computer Science and Engineering</strong>
+                <div class="edu-meta">APJ Abdul Kalam Technological University, Kerala • <time datetime="2018-08">Aug 2018</time> – <time datetime="2022-08">Aug 2022</time> • CGPA: 7.43/10</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </article>
+      <article class="column" id="col-2">
+        <div class="card-preview">
+          <h3>Experiences</h3>
+          <p class="preview-text">Research Intern — NIT-Trichy (June 2025 – Aug 2025)
+          <br>Apprentice Network Engineer — AT&amp;T Communications India Pvt. Ltd. (Nov 2022 – Nov 2023)</p>
+          <button class="view-more" aria-label="View full experiences">View more</button>
+        </div>
+
+        <div class="card-full" hidden>
+          <div class="card-experience">
+            <h3>Experiences</h3>
+            <ul class="exp-list">
+              <li>
+                <strong>Research Intern — NIT-Trichy</strong>
+                <div class="edu-meta">Tiruchirappalli, Tamil Nadu • <time datetime="2025-06">June 2025</time> – <time datetime="2025-08">Aug 2025</time></div>
+                <ul class="role-list">
+                  <li>Conducted research on EEG signal classification for depression detection under the guidance of Dr. V. Sridevi, using real-world EEG datasets.</li>
+                  <li>Designed and trained deep learning models, experimenting with CNN and LSTM architectures to enhance classification accuracy and model robustness.</li>
+                  <li>Deployed deep learning models on HPC clusters using SLURM; submitted and monitored batch jobs via <code>sbatch</code>, <code>squeue</code>, <code>srun</code>, and <code>sinfo</code>.</li>
+                </ul>
+              </li>
+              <li>
+                <strong>Apprentice Network Engineer — AT&amp;T Communications India Pvt. Ltd.</strong>
+                <div class="edu-meta">Bengaluru, Karnataka • <time datetime="2022-11">Nov 2022</time> – <time datetime="2023-11">Nov 2023</time></div>
+                <ul class="role-list">
+                  <li>Managed enterprise routers and switches over SSH, leveraging Unix commands for configuration and verification of network devices.</li>
+                  <li>Developed shell scripts for automating device logging and wrote Python scripts to streamline configuration management across network infrastructure.</li>
+                  <li>Collaborated on Layer 3/Layer 2 segmentation using BGP, OSPF, and VLANs.</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </article>
+      <article class="column" id="col-3">
+        <div class="card-preview">
+          <h3>Projects / More</h3>
+          <p class="preview-text">Short list of projects and links — click to view full details.</p>
+          <button class="view-more" aria-label="View more projects">View more</button>
+        </div>
+        <div class="card-full" hidden>
+          <div class="card-projects">
+            <h3>Projects</h3>
+            <ul class="proj-list">
+              <li>
+                <strong>Adaptive Handover Optimization in Open RAN</strong>
+                <div class="proj-meta">TensorFlow, TFLite, Python • <a href="#" aria-label="GitHub link">GitHub</a> • M.Tech Mini Project</div>
+                <ul class="proj-bullets">
+                  <li>Developed an ML-based adaptive handover model using LSTM on the Berlin V2X dataset for predictive handovers in 5G networks, achieving 86.67% accuracy.</li>
+                  <li>Compressed the model using structured pruning and quantization, reducing size by 87% for real-time edge deployment in Open RAN environments.</li>
+                </ul>
+              </li>
+              <li>
+                <strong>Seccomp-based System Call Filtering</strong>
+                <div class="proj-meta">C, Linux, Seccomp • <a href="#" aria-label="GitHub link">GitHub</a> • Micro Project</div>
+                <ul class="proj-bullets">
+                  <li>Developed a system-level security module using Seccomp to filter Linux system calls in real time for containerized workloads.</li>
+                  <li>Enforced syscall whitelisting policies, reducing kernel attack surface and preventing unauthorized system access.</li>
+                </ul>
+              </li>
+              <li>
+                <strong>CCTV Deployment Optimization</strong>
+                <div class="proj-meta">Python, PyQt5, ILP • <a href="#" aria-label="GitHub link">GitHub</a> • Micro Project</div>
+                <ul class="proj-bullets">
+                  <li>Created a PyQt5 GUI tool for ILP-based camera placement, ensuring 100% area coverage with 28.6% cost savings in synthetic urban layouts.</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </article>
     </section>
   </main>
 
