@@ -177,22 +177,40 @@ body.light-theme .theme-toggle .icon-moon { opacity: 0; transform: scale(0.6) ro
     padding-left: 1.5rem; /* add tab/indent before list items */
 }
 
-/* Preview block shown on cards: clamp long text neatly */
-.card-preview { width: 100%; text-align: center; }
+/* Preview block shown on cards: heading at top, preview body centered and evenly spaced, action at bottom */
+.card-preview {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between; /* header top, preview-body fills center, button bottom */
+  flex: 1 1 auto;
+  gap: 0.6rem;
+  padding: 0.6rem 0.4rem;
+  font-size: clamp(0.75rem, 2vw, 1rem);
+}
+.card-preview h3 { align-self: stretch; margin-top: 0; margin-bottom: 0.4rem; text-align: center; }
+.preview-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly; /* evenly space preview paragraphs vertically */
+  align-items: center;
+  width: 100%;
+  flex: 1 1 auto; /* take available vertical space */
+  gap: 0.5rem;
+}
 .card-preview .preview-text {
   display: -webkit-box;
   -webkit-line-clamp: 4; /* show up to 4 lines */
-  /* Standard property for newer browsers / linters */
   line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
   hyphens: auto;
-  margin: 0 0 0.6rem 0;
+  margin: 0;
   text-align: center; /* center preview text */
-}
-.card-preview {
-    font-size: clamp(0.75rem, 2vw, 1rem);
+  width: 100%;
 }
 .view-more {
   background: transparent;
@@ -204,7 +222,6 @@ body.light-theme .theme-toggle .icon-moon { opacity: 0; transform: scale(0.6) ro
   color: var(--text);
   transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
 }
-.card-preview h3 { margin-top: 0; margin-bottom: 0.4rem; text-align: center; }
 
 /* Keep full content hidden in normal layout; popup will source this HTML */
 .card-full { display: none; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }

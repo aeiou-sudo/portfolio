@@ -54,12 +54,14 @@
     <section class="content-columns" aria-label="Main content">
       <article class="column" id="col-1">
         <!-- Preview shown on the card (truncated) -->
-        <div class="card-preview">
-          <h3>Education</h3>
-          <p class="preview-text">M.Tech — Computer Science and Engineering <br>CGPA: 8.29/10</p>
-          <p class="preview-text">B.Tech — Computer Science and Engineering <br>CGPA: 7.43/10</p>
-          <button class="view-more" aria-label="View full education">View more</button>
-        </div>
+          <div class="card-preview">
+            <h3>Education</h3>
+            <div class="preview-body">
+              <p class="preview-text">M.Tech — Computer Science and Engineering <br>CGPA: 8.29/10</p>
+              <p class="preview-text">B.Tech — Computer Science and Engineering <br>CGPA: 7.43/10</p>
+            </div>
+            <button class="view-more" aria-label="View full education">View more</button>
+          </div>
 
         <!-- Full content kept in DOM and hidden; used by popup when opened -->
         <div class="card-full" hidden>
@@ -81,8 +83,10 @@
       <article class="column" id="col-2">
         <div class="card-preview">
           <h3>Experiences</h3>
-          <p class="preview-text">Research Intern - NIT-Trichy<br>(June 2025 – Aug 2025)</p>
-          <p class="preview-text">Apprentice Network Engineer - AT&amp;T Communications India Pvt. Ltd.<br>(Nov 2022 – Nov 2023)</p>
+          <div class="preview-body">
+            <p class="preview-text">Research Intern - NIT-Trichy<br>(June 2025 – Aug 2025)</p>
+            <p class="preview-text">Apprentice Network Engineer - AT&amp;T Communications India Pvt. Ltd.<br>(Nov 2022 – Nov 2023)</p>
+          </div>
           <button class="view-more" aria-label="View full experiences">View more</button>
         </div>
 
@@ -115,9 +119,11 @@
       <article class="column" id="col-3">
         <div class="card-preview">
           <h3>Projects</h3>
-          <p class="preview-text">Adaptive Handover Optimization in Open RAN</p>
-          <p class="preview-text">Seccomp-based System Call Filtering</p>
-          <p class="preview-text">CCTV Deployment Optimization</p>
+          <div class="preview-body">
+            <p class="preview-text">Adaptive Handover Optimization in Open RAN</p>
+            <p class="preview-text">Seccomp-based System Call Filtering</p>
+            <p class="preview-text">CCTV Deployment Optimization</p>
+          </div>
           <button class="view-more" aria-label="View more projects">View more</button>
         </div>
         <div class="card-full" hidden>
