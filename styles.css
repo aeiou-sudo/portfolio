@@ -199,7 +199,7 @@ body.light-theme .theme-toggle .icon-moon { opacity: 0; transform: scale(0.6) ro
   align-items: center;
   width: 100%;
   flex: 0 0 auto; /* don't stretch; let it be placed between heading and button */
-  gap: 0.18rem; /* tighter spacing between paragraphs */
+  gap: 0.8rem; /* larger spacing between paragraphs for clearer separation */
 }
 .card-preview .preview-text {
   display: -webkit-box;
