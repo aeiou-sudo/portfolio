@@ -125,8 +125,9 @@ body.light-theme .theme-toggle .icon-moon { opacity: 0; transform: scale(0.6) ro
 .column {
   flex: 1 1 0;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column; /* stack content vertically inside each column */
+  align-items: stretch;    /* make children fill column width */
+  justify-content: flex-start; /* start content at top so headings align */
   padding: 1rem;
   border: 1px solid rgba(255,255,255,0.08);
   min-height: 0; /* allow flex children to size correctly */
@@ -190,15 +191,15 @@ body.light-theme .theme-toggle .icon-moon { opacity: 0; transform: scale(0.6) ro
   padding: 0.6rem 0.4rem;
   font-size: clamp(0.75rem, 2vw, 1rem);
 }
-.card-preview h3 { align-self: stretch; margin-top: 0; margin-bottom: 0.4rem; text-align: center; }
+.card-preview h3 { align-self: stretch; margin-top: 0; margin-bottom: 1rem; text-align: center; }
 .preview-body {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly; /* evenly space preview paragraphs vertically */
+  justify-content: flex-start; /* paragraphs start from the top of this group */
   align-items: center;
   width: 100%;
-  flex: 1 1 auto; /* take available vertical space */
-  gap: 0.5rem;
+  flex: 0 0 auto; /* don't stretch; let it be placed between heading and button */
+  gap: 0.18rem; /* tighter spacing between paragraphs */
 }
 .card-preview .preview-text {
   display: -webkit-box;
