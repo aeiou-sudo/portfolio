@@ -297,9 +297,9 @@ body.light-theme .theme-toggle .icon-moon { opacity: 0; transform: scale(0.6) ro
 
 /* Popup container that holds a cloned card */
 .popup-card {
-  background: inherit;
-  backdrop-filter: blur(100%);
-  -webkit-backdrop-filter: blur(100%);
+  background: rgba(126, 126, 126, 0.1);
+  backdrop-filter: blur(2000px);
+  -webkit-backdrop-filter: blur(2000px);
   color: inherit;
   border-radius: 14px;
   box-shadow: 0 20px 50px rgba(0,0,0,0.45);
