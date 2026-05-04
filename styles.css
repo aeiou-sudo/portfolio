@@ -94,8 +94,42 @@ a:hover {
 }
 
 .hero {
-  max-width: 760px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(220px, 0.85fr);
+  gap: clamp(1rem, 3vw, 2rem);
+  align-items: center;
   padding: clamp(1.5rem, 3vw, 2.25rem) 0 clamp(2rem, 4vw, 3rem);
+}
+
+.hero-copy {
+  max-width: 760px;
+}
+
+.hero-photo {
+  aspect-ratio: 4 / 5;
+  border-radius: calc(var(--radius) + 8px);
+  border: 1px solid var(--line);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.46), rgba(255, 255, 255, 0.22)),
+    radial-gradient(circle at 30% 20%, rgba(127, 106, 87, 0.18), transparent 35%),
+    rgba(255, 255, 255, 0.28);
+  box-shadow: var(--shadow);
+  display: grid;
+  place-items: center;
+  min-height: 320px;
+  overflow: hidden;
+}
+
+.hero-photo span {
+  padding: 0.7rem 1rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.5);
+  color: var(--muted);
+  font-family: Inter, "Segoe UI", system-ui, sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .eyebrow,
@@ -283,6 +317,15 @@ a:hover {
 
   .panel {
     grid-column: 1 / -1;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-photo {
+    order: -1;
+    min-height: 280px;
   }
 }
 
