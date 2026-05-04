@@ -243,10 +243,30 @@ a:hover {
 }
 
 .contact-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
   background: rgba(255, 255, 255, 0.34);
   border-color: var(--line);
   font-family: Inter, "Segoe UI", system-ui, sans-serif;
   font-size: 0.86rem;
+}
+
+.contact-links svg {
+  width: 1rem;
+  height: 1rem;
+  flex: 0 0 auto;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
+.contact-links a:nth-child(2) svg,
+.contact-links a:nth-child(3) svg {
+  fill: currentColor;
+  stroke: none;
 }
 
 @media (max-width: 800px) {
