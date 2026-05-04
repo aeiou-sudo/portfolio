@@ -116,7 +116,7 @@ a:hover {
   box-shadow: var(--shadow);
   display: grid;
   place-items: center;
-  min-height: 240px;
+  min-height: 144px;
   overflow: hidden;
 }
 
