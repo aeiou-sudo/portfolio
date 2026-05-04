@@ -242,6 +242,37 @@ a:hover {
   border-top: 0;
 }
 
+.list li.open-to {
+  position: relative;
+  margin: -0.35rem -0.45rem 0;
+  padding: 0.85rem 0.95rem;
+  border-radius: 16px;
+  background: rgba(127, 106, 87, 0.1);
+  animation: open-to-pulse 2.4s ease-in-out infinite;
+}
+
+.list li.open-to::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(127, 106, 87, 0.24);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+@keyframes open-to-pulse {
+  0%,
+  100% {
+    opacity: 0.72;
+    box-shadow: 0 0 0 0 rgba(127, 106, 87, 0);
+  }
+
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 0 8px rgba(127, 106, 87, 0.08);
+  }
+}
+
 .list strong,
 .timeline strong {
   display: block;
