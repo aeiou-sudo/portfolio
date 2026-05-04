@@ -106,7 +106,7 @@ a:hover {
 }
 
 .hero-photo {
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 4 / 3;
   border-radius: calc(var(--radius) + 8px);
   border: 1px solid var(--line);
   background:
@@ -116,7 +116,7 @@ a:hover {
   box-shadow: var(--shadow);
   display: grid;
   place-items: center;
-  min-height: 320px;
+  min-height: 240px;
   overflow: hidden;
 }
 
