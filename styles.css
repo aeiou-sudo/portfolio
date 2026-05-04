@@ -1,402 +1,314 @@
 :root {
-  /* Ash (dark) theme defaults */
-  --bg: #0c0606; /* ash / charcoal instead of pure black */
-  --text: #fff;
-  --accent: #fff;
-  --header-h: 40vh; /* header ~40% */
-  --content-h: 60vh; /* content ~60% */
-  --gap: 1rem;
-  --radius: 8px;
-  --muted: rgba(255,255,255,0.18);
-  --muted-bg: rgba(255,255,255,0.03);
+  color-scheme: light;
+  --bg: #f3efe7;
+  --bg-2: #ebe4d7;
+  --panel: rgba(255, 255, 255, 0.48);
+  --text: #1f1a17;
+  --muted: rgba(31, 26, 23, 0.66);
+  --line: rgba(31, 26, 23, 0.1);
+  --accent: #7f6a57;
+  --shadow: 0 24px 60px rgba(54, 42, 31, 0.08);
+  --radius: 24px;
+  --content-width: 1080px;
 }
 
-/* Base reset */
-* { box-sizing: border-box; }
-html, body { height: 100%; }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   min-height: 100vh;
-  height: 100vh; /* lock viewport height */
-  overflow: hidden; /* prevent scrollbars */
-  background-color: var(--bg);
   color: var(--text);
-  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial;
-  display: flex;
-  flex-direction: column;
+  background:
+    radial-gradient(circle at top left, rgba(127, 106, 87, 0.12), transparent 34%),
+    radial-gradient(circle at top right, rgba(170, 148, 126, 0.16), transparent 28%),
+    linear-gradient(180deg, var(--bg), var(--bg-2));
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
-/* Header / hero */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--accent);
+}
+
+.site-header,
+.site-main {
+  width: min(calc(100% - 32px), var(--content-width));
+  margin: 0 auto;
+}
+
 .site-header {
-  height: var(--header-h);
-  flex: 0 0 var(--header-h);
   display: flex;
   align-items: center;
-  justify-content: center;
-  position: relative;
-  padding: 1rem;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 0 0;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.brand-mark {
+  width: 2rem;
+  height: 2rem;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.42);
+  font-size: 0.85rem;
+}
+
+.brand-text,
+.site-nav {
+  font-family: Inter, "Segoe UI", system-ui, sans-serif;
+  font-size: 0.82rem;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  color: var(--muted);
+}
+
+.site-main {
+  padding: clamp(3rem, 6vw, 5.5rem) 0 3rem;
 }
 
 .hero {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem; /* tighten spacing between hero elements */
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1rem;
-  position: relative; /* create stacking context for hero children */
+  max-width: 760px;
+  padding: clamp(1.5rem, 3vw, 2.25rem) 0 clamp(2rem, 4vw, 3rem);
 }
 
-/* Highlight the small 'About Me' label inside the hero so it stands out */
-.hero-about-me {
+.eyebrow,
+.section-label,
+.meta-row,
+.site-footer p,
+.list span,
+.timeline span {
+  font-family: Inter, "Segoe UI", system-ui, sans-serif;
+}
+
+.eyebrow {
+  margin: 0 0 0.85rem;
   color: var(--accent);
-  /* background: var(--muted-bg); */
-  padding: 0.25rem 0.6rem;
-  border-radius: 999px; /* pill */
-  font-weight: 700;
-  font-size: clamp(0.85rem, 1.1vw, 1rem);
-  letter-spacing: 0.2px;
-  display: inline-block;
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
 }
 
-.hero-about-me p { margin: 0; color: inherit; }
-
-.hero-name { margin: 0; font-size: clamp(1.5rem, 3.5vw, 2.5rem); }
-.hero-title { margin: 0.25rem 0 0; font-size: clamp(1rem, 2.5vw, 1.25rem); opacity: 0.9; }
-
-/* Reset default margins inside hero to avoid large gaps */
-.hero h1, .hero p, .hero > div { margin: 0; padding: 0; }
-.hero-name, .hero-title, .hero-about-me { margin: 0; }
-.hero-name h1 { line-height: 1.05; }
-
-/* Theme toggle */
-.theme-toggle {
-  position: absolute;
-  top: 0.75rem;
-  right: 0.75rem;
-  background: transparent;
-  border: 1px solid currentColor;
-  color: inherit;
-  padding: 0.45rem 0.65rem;
-  border-radius: var(--radius);
-  cursor: pointer;
-  font-size: 0.9rem;
-}
-.theme-toggle:focus { outline: 2px solid; outline-offset: 2px; }
-
-/* Icon styles inside the toggle */
-.theme-toggle { display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; }
-.theme-toggle .icon { display: inline-flex; width: 1.25rem; height: 1.25rem; align-items: center; justify-content: center; color: var(--text); }
-.theme-toggle .icon svg { display: block; width: 100%; height: 100%; }
-
-/* Default: show moon (dark mode) when body has no light-theme; show sun when light-theme present */
-.theme-toggle .icon-sun { opacity: 0; transform: scale(0.6) rotate(-20deg); transition: opacity 320ms ease, transform 320ms cubic-bezier(.2,.8,.2,1); }
-.theme-toggle .icon-moon { opacity: 1; transform: scale(1) rotate(0deg); transition: opacity 320ms ease, transform 320ms cubic-bezier(.2,.8,.2,1); }
-body.light-theme .theme-toggle .icon-sun { opacity: 1; transform: scale(1) rotate(0deg); }
-body.light-theme .theme-toggle .icon-moon { opacity: 0; transform: scale(0.6) rotate(20deg); }
-
-/* small animation trigger class to add a rotation when toggled */
-.theme-toggle.is-animating { transition: transform 300ms ease; transform: rotate(12deg); }
-
-/* Respect reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  .theme-toggle .icon, .theme-toggle { transition: none !important; transform: none !important; }
-}
-
-/* Main content area */
-.site-main {
-  flex: 0 0 var(--content-h);
-  height: var(--content-h);
-  display: flex;
-  width: 100%;
-}
-
-.content-columns {
-  display: flex;
-  gap: var(--gap);
-  width: 100%;
-  padding: calc(var(--gap));
-  align-items: stretch;
-}
-
-.column {
-  flex: 1 1 0;
-  display: flex;
-  flex-direction: column; /* stack content vertically inside each column */
-  align-items: stretch;    /* make children fill column width */
-  justify-content: flex-start; /* start content at top so headings align */
-  padding: 1rem;
-  border: 1px solid rgba(255,255,255,0.08);
-  min-height: 0; /* allow flex children to size correctly */
-  text-align: center;
-  border-radius: 20px;
-  padding: 20px;
-  /* removed external margin to avoid overlap with header; spacing handled by container gap */
-  backdrop-filter: blur(10px);            /* Frosted glass */
-  -webkit-backdrop-filter: blur(10px);    /* Safari support */
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-
-  /* Border for extra glass look */
-  border: 1px solid rgba(255, 255, 255, 0.3);
-
-  /* Responsive content */
-  text-align: center;
-  min-width: 0; /* allow flex items to shrink without overflowing */
-  overflow-wrap: anywhere;
-  word-break: break-word;
-}
-
-/* Education card inside a column */
-.card-education {
-  width: 100%;
-  text-align: left;
-}
-.card-education h3 { margin: 0 0 0.5rem 0; font-size: 1.1rem; text-align: center; }
-.card-education .edu-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.75rem; }
-.card-education .edu-list li { background: transparent; padding: 0.5rem 0; }
-.card-education .edu-meta { color: rgba(255,255,255,0.7); font-size: 0.95rem; margin-top: 0.25rem; }
-
-/* Experience card inside a column */
-.card-experience {
-  width: 100%;
-  text-align: left;
-}
-.card-experience h3 { margin: 0 0 0.5rem 0; font-size: 1.1rem; text-align: center; }
-.card-experience .exp-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.75rem; }
-.card-experience .exp-list li { background: transparent; padding: 0.5rem 0; }
-.card-experience .exp-meta { color: rgba(255,255,255,0.7); font-size: 0.95rem; margin-top: 0.25rem; }
-.card-experience .role-list { 
-    color: rgba(255,255,255,0.7); 
-    list-style: none; 
-    margin: 0; 
-    padding: 0; 
-    display: grid; 
-    gap: 0.75rem; 
-    padding-left: 1.5rem; /* add tab/indent before list items */
-}
-
-/* Preview block shown on cards: heading at top, preview body centered and evenly spaced, action at bottom */
-.card-preview {
-  width: 100%;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between; /* header top, preview-body fills center, button bottom */
-  flex: 1 1 auto;
-  gap: 0.6rem;
-  padding: 0.6rem 0.4rem;
-  font-size: clamp(0.75rem, 2vw, 1rem);
-}
-.card-preview h3 { align-self: stretch; margin-top: 0; margin-bottom: 1rem; text-align: center; }
-.preview-body {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start; /* paragraphs start from the top of this group */
-  align-items: center;
-  width: 100%;
-  flex: 0 0 auto; /* don't stretch; let it be placed between heading and button */
-  gap: 0.8rem; /* larger spacing between paragraphs for clearer separation */
-}
-.card-preview .preview-text {
-  display: -webkit-box;
-  -webkit-line-clamp: 4; /* show up to 4 lines */
-  line-clamp: 4;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  hyphens: auto;
+.hero h1 {
   margin: 0;
-  text-align: center; /* center preview text */
-  width: 100%;
-}
-.view-more {
-  background: transparent;
-  border: 1px solid currentColor;
-  padding: 0.35rem 0.6rem;
-  border-radius: 8px;
-  font-size: 0.9rem;
-  cursor: pointer;
-  color: var(--text);
-  transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
+  font-size: clamp(3rem, 10vw, 6.6rem);
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+  font-weight: 500;
 }
 
-/* Keep full content hidden in normal layout; popup will source this HTML */
-.card-full { display: none; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
-
-/* Popup close button */
-.popup-close {
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
-  background: transparent;
-  border: 1px solid var(--muted);
-  color: inherit;
-  padding: 0.35rem 0.6rem;
-  border-radius: 8px;
-  cursor: pointer;
+.lead {
+  margin: 1.2rem 0 0;
+  max-width: 44rem;
+  font-size: clamp(1.02rem, 2vw, 1.18rem);
+  color: var(--muted);
 }
 
-@media (max-width: 480px) {
-  .popup-card {
-    width: calc(100vw - 2rem);
-    max-height: calc(100vh - 2rem);
-    border-radius: 12px;
-    padding: 1rem;
-  }
-  .overlay { padding: 0.5rem; }
-  .card-education h3 { font-size: 1rem; }
-  .edu-meta { font-size: 0.9rem; }
-  /* Ensure hero brief scales and its text wraps properly on very small screens */
-  .hero-brief { padding: 0.75rem; font-size: 0.9rem; }
-  .card-preview .preview-text { -webkit-line-clamp: 3; line-clamp: 3; }
-  .view-more { padding: 0.4rem 0.6rem; }
+.meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 1.6rem;
+  color: var(--muted);
+  font-size: 0.86rem;
 }
 
-/* Projects card styles */
-.card-projects { width: 100%; text-align: left; }
-.card-projects h3 { margin: 0 0 0.5rem 0; font-size: 1.1rem; text-align: center; }
-.card-projects .proj-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.75rem; }
-.card-projects .proj-list li { background: transparent; padding: 0.5rem 0; }
-.card-projects .proj-meta { color: rgba(255,255,255,0.7); font-size: 0.95rem; margin-top: 0.25rem; }
-.card-projects .proj-bullets { 
-    color: rgba(255,255,255,0.7); 
-    list-style: none; 
-    margin: 0; 
-    padding: 0; 
-    display: grid; 
-    gap: 0.75rem; 
-    padding-left: 1.5rem; /* add tab/indent before list items */
+.meta-row span,
+.site-nav a,
+.contact-links a {
+  padding: 0.5rem 0.8rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  transition: border-color 160ms ease, background-color 160ms ease, color 160ms ease;
 }
 
-
-@media (max-width: 480px) {
-  .proj-bullets li { font-size: 0.92rem; }
-  .proj-meta { font-size: 0.9rem; }
+.meta-row span {
+  background: rgba(255, 255, 255, 0.35);
+  border-color: var(--line);
 }
 
-/* Overlay used when a card is expanded */
-.overlay {
-  position: fixed;
-  inset: 0;
+.site-nav a:hover,
+.contact-links a:hover {
+  background: rgba(255, 255, 255, 0.44);
+  border-color: var(--line);
+}
+
+.section-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.panel {
+  grid-column: span 6;
+  padding: 1.4rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: var(--shadow);
+}
+
+.panel-wide {
+  grid-column: 1 / -1;
+}
+
+.section-label {
+  margin: 0 0 1rem;
+  color: var(--accent);
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.list,
+.timeline {
+  display: grid;
+  gap: 1rem;
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.list li,
+.timeline div {
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+}
+
+.list li:first-child,
+.timeline div:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.list strong,
+.timeline strong {
+  display: block;
+  margin-bottom: 0.15rem;
+  font-weight: 600;
+}
+
+.list span,
+.timeline span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.site-footer {
   display: flex;
   align-items: center;
-  justify-content: center;
-  background: rgba(0,0,0,0.6);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  z-index: 1200;
-  opacity: 0;
-  transition: opacity 200ms ease;
-  padding: 1rem;
-}
-.overlay.is-visible { opacity: 1; }
-
-/* Popup container that holds a cloned card */
-.popup-card {
-  background: rgba(126, 126, 126, 0.1);
-  backdrop-filter: blur(2000px);
-  -webkit-backdrop-filter: blur(2000px);
-  color: inherit;
-  border-radius: 14px;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.45);
-  transform: scale(0.6);
-  transition: transform 260ms cubic-bezier(.2,.9,.2,1), opacity 200ms ease;
-  opacity: 0;
-  max-width: min(92vw, 1100px);
-  width: min(92vw, 1100px);
-  max-height: 90vh;
-  overflow: auto;
-  padding: 1.25rem;
-  border: 1px solid rgba(255,255,255,0.06);
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.8rem 0 0.5rem;
+  color: var(--muted);
 }
 
-/* When overlay visible, show popup at full size */
-.overlay.is-visible .popup-card {
-  transform: scale(1);
-  opacity: 1;
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  justify-content: flex-end;
 }
 
-/* Mobile tuning: ensure popup fits and no viewport scroll */
-@media (max-width: 480px) {
-  .popup-card {
-    width: calc(100vw - 2rem);
-    max-height: calc(100vh - 2rem);
-    border-radius: 12px;
-    padding: 1rem;
+.contact-links a {
+  background: rgba(255, 255, 255, 0.34);
+  border-color: var(--line);
+  font-family: Inter, "Segoe UI", system-ui, sans-serif;
+  font-size: 0.86rem;
+}
+
+@media (max-width: 800px) {
+  .site-header,
+  .site-footer {
+    flex-direction: column;
+    align-items: flex-start;
   }
-  .overlay { padding: 0.5rem; }
-}
 
-/* Small screens: stack columns within the same content area (no page scroll) */
-@media (max-width: 768px) {
-  /* Allow page-level scrolling on small screens when content exceeds the viewport */
-  body { overflow: auto; height: auto; }
-  /* Let the main content size naturally rather than forcing a 60vh block */
-  .site-main { flex: 1 1 auto; height: auto; }
-  .site-header { height: auto; flex: 0 0 auto; padding-bottom: 0.5rem; }
-  .content-columns { flex-direction: column; }
-  /* Columns grow naturally; let the page scroll instead of internal scrolling */
-  .column {
-    height: auto;
-    max-height: none;
-    overflow: visible;
-    padding: 0.75rem;
+  .site-nav,
+  .contact-links {
+    justify-content: flex-start;
+  }
+
+  .panel {
+    grid-column: 1 / -1;
   }
 }
 
-/* Theme override: light */
-body.light-theme {
-  /* Light theme: use an off-white rather than pure white */
-  --bg: #fbeed5; /* off-white */
-  --text: #000;
-  --accent: #000;
+@media (max-width: 560px) {
+  .site-header,
+  .site-main {
+    width: min(calc(100% - 24px), var(--content-width));
+  }
+
+  .site-main {
+    padding-top: 2rem;
+  }
+
+  .panel {
+    padding: 1.15rem;
+    border-radius: 20px;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.5rem, 18vw, 4.2rem);
+  }
+
+  .site-nav,
+  .brand-text,
+  .contact-links a,
+  .meta-row,
+  .eyebrow,
+  .section-label {
+    font-size: 0.78rem;
+  }
 }
 
-/* light-theme muted overrides */
-body.light-theme {
-  --muted: rgba(0,0,0,0.12);
-  --muted-bg: rgba(0,0,0,0.04);
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
-
-/* Light-theme overlay variant */
-body.light-theme .overlay { background: rgba(0,0,0,0.35); }
-
-/* Smooth transitions for theme changes */
-body, .theme-toggle, .column {
-  transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease;
-}
-
-/* Minimal spacing tweaks */
-.content-columns { gap: clamp(0.5rem, 1.5vw, 1rem); }
-
-/* Accessibility helpers */
-.column:focus { outline: 2px solid; outline-offset: 3px; }
-
-/* Small accessibility visual */
-.popup-card:focus { outline: 3px solid rgba(255,255,255,0.12); outline-offset: 4px; }
-
-.hero-brief{
-    font-size: clamp(0.85rem, 2vw, 1rem);
-    width: 80vw;
-    max-width: 80vw;
-    /* padding-bottom: .8 rem; */
-    line-height: 1.4;
-}
-
-/*.hero-brief and .card-education now get safe wrapping */
-.hero-brief, .card-education, .card-education .edu-meta, .card-education h3 {
-  overflow-wrap: anywhere;
-  word-break: break-word;
-  hyphens: auto;
-  text-justify:distribute-all-lines;
-}
-
-/* Accessibility: visually hidden but still focusable */
-.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 
 /* Floating action button (FAB) stack */
 .fab-stack {

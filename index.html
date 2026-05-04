@@ -2,199 +2,97 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Minimal portfolio of Paul Jose, AI/ML researcher and engineer.">
+  <title>Paul Jose</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="site-header" role="banner">
-    <div class="hero">
-      <div class="hero-name">
-      <h1>Paul Jose</h1>
-      </div>
-      <div class="hero-title">
-      <p>AI/ML Researcher</p>
-      </div>
-      <div class="hero-about-me">
-      <p>About Me</p>
-      </div>
-      <div class="hero-brief">
-      <p>I am Paul Jose, pursuing my M.Tech in Computer Science and Engineering at MACE with a focus on Artificial Intelligence and Machine Learning. My work explores deep learning, explainable AI, and their applications in areas like healthcare, networks, and cybersecurity. Through projects on EEG classification, predictive modeling, and optimization, I aim to design AI systems that are both impactful and interpretable.</p>
-      </div>
-    </div>
-
-    <button id="theme-toggle" class="theme-toggle" aria-pressed="false" aria-label="Toggle theme">
-      <span class="icon icon-sun" aria-hidden="true">
-        <!-- simple sun icon -->
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="12" cy="12" r="4" fill="currentColor" />
-          <g stroke="currentColor" stroke-width="2" stroke-linecap="round">
-            <path d="M12 2v2" />
-            <path d="M12 20v2" />
-            <path d="M4.93 4.93l1.41 1.41" />
-            <path d="M17.66 17.66l1.41 1.41" />
-            <path d="M2 12h2" />
-            <path d="M20 12h2" />
-            <path d="M4.93 19.07l1.41-1.41" />
-            <path d="M17.66 6.34l1.41-1.41" />
-          </g>
-        </svg>
-      </span>
-      <span class="icon icon-moon" aria-hidden="true">
-        <!-- simple moon icon -->
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" fill="currentColor"/>
-        </svg>
-      </span>
-      <span class="sr-only">Toggle theme</span>
-    </button>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Paul Jose home">
+      <span class="brand-mark">P</span>
+      <span class="brand-text">Paul Jose</span>
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="#about">About</a>
+      <a href="#work">Work</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </header>
 
-  <main class="site-main" role="main">
-    <section class="content-columns" aria-label="Main content">
-      <article class="column" id="col-1">
-        <!-- Preview shown on the card (truncated) -->
-          <div class="card-preview">
-            <h3>Education</h3>
-            <div class="preview-body">
-              <p class="preview-text">M.Tech — Computer Science and Engineering <br>CGPA: 8.29/10</p>
-              <p class="preview-text">B.Tech — Computer Science and Engineering <br>CGPA: 7.43/10</p>
-            </div>
-            <button class="view-more" aria-label="View full education">View more</button>
-          </div>
+  <main id="top" class="site-main">
+    <section class="hero" aria-label="Introduction">
+      <p class="eyebrow">AI / ML Researcher</p>
+      <h1>Paul Jose</h1>
+      <p class="lead" id="about">
+        I build focused AI systems with an emphasis on clarity, reliability, and interpretation.
+        My work spans EEG classification, predictive modeling, optimization, and applied machine learning.
+      </p>
 
-        <!-- Full content kept in DOM and hidden; used by popup when opened -->
-        <div class="card-full" hidden>
-          <div class="card-education">
-            <h3>Education</h3>
-            <ul class="edu-list">
-              <li>
-                <strong>M.Tech — Computer Science and Engineering</strong>
-                <div class="edu-meta">Mar Athanasius College of Engineering, Kerala • <time datetime="2024-09">Sept 2024</time> – <time datetime="2026-09">Sept 2026</time> • CGPA: 8.29/10</div>
-              </li>
-              <li>
-                <strong>B.Tech — Computer Science and Engineering</strong>
-                <div class="edu-meta">APJ Abdul Kalam Technological University, Kerala • <time datetime="2018-08">Aug 2018</time> – <time datetime="2022-08">Aug 2022</time> • CGPA: 7.43/10</div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </article>
-      <article class="column" id="col-2">
-        <div class="card-preview">
-          <h3>Experiences</h3>
-          <div class="preview-body">
-            <p class="preview-text">Research Intern - NIT-Trichy<br>(June 2025 – Aug 2025)</p>
-            <p class="preview-text">Apprentice Network Engineer - AT&amp;T Communications India Pvt. Ltd.<br>(Nov 2022 – Nov 2023)</p>
-          </div>
-          <button class="view-more" aria-label="View full experiences">View more</button>
-        </div>
+      <div class="meta-row" aria-label="Key details">
+        <span>M.Tech CSE</span>
+        <span>MACE, Kerala</span>
+        <span>Research + Engineering</span>
+      </div>
+    </section>
 
-        <div class="card-full" hidden>
-          <div class="card-experience">
-            <h3>Experiences</h3>
-            <ul class="exp-list">
-              <li>
-                <strong>Research Intern — NIT-Trichy</strong>
-                <div class="edu-meta">Tiruchirappalli, Tamil Nadu • <time datetime="2025-06">June 2025</time> – <time datetime="2025-08">Aug 2025</time></div>
-                <ul class="role-list">
-                  <li>Conducted research on EEG signal classification for depression detection under the guidance of Dr. V. Sridevi, using real-world EEG datasets.</li>
-                  <li>Designed and trained deep learning models, experimenting with CNN and LSTM architectures to enhance classification accuracy and model robustness.</li>
-                  <li>Deployed deep learning models on HPC clusters using SLURM; submitted and monitored batch jobs via <code>sbatch</code>, <code>squeue</code>, <code>srun</code>, and <code>sinfo</code>.</li>
-                </ul>
-              </li>
-              <li>
-                <strong>Apprentice Network Engineer — AT&amp;T Communications India Pvt. Ltd.</strong>
-                <div class="edu-meta">Bengaluru, Karnataka • <time datetime="2022-11">Nov 2022</time> – <time datetime="2023-11">Nov 2023</time></div>
-                <ul class="role-list">
-                  <li>Managed enterprise routers and switches over SSH, leveraging Unix commands for configuration and verification of network devices.</li>
-                  <li>Developed shell scripts for automating device logging and wrote Python scripts to streamline configuration management across network infrastructure.</li>
-                  <li>Collaborated on Layer 3/Layer 2 segmentation using BGP, OSPF, and VLANs.</li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-        </div>
+    <section class="section-grid" aria-label="Portfolio highlights">
+      <article class="panel" id="work">
+        <p class="section-label">Selected work</p>
+        <ul class="list">
+          <li>
+            <strong>Adaptive Handover Optimization in Open RAN</strong>
+            <span>TensorFlow, TFLite, Python</span>
+          </li>
+          <li>
+            <strong>Seccomp-based System Call Filtering</strong>
+            <span>C, Linux, Seccomp</span>
+          </li>
+          <li>
+            <strong>CCTV Deployment Optimization</strong>
+            <span>Python, PyQt5, ILP</span>
+          </li>
+        </ul>
       </article>
-      <article class="column" id="col-3">
-        <div class="card-preview">
-          <h3>Projects</h3>
-          <div class="preview-body">
-            <p class="preview-text">Adaptive Handover Optimization in Open RAN</p>
-            <p class="preview-text">Seccomp-based System Call Filtering</p>
-            <p class="preview-text">CCTV Deployment Optimization</p>
+
+      <article class="panel">
+        <p class="section-label">Experience</p>
+        <ul class="list">
+          <li>
+            <strong>Research Intern, NIT-Trichy</strong>
+            <span>EEG classification and deep learning research</span>
+          </li>
+          <li>
+            <strong>Apprentice Network Engineer, AT&amp;T</strong>
+            <span>Network automation, routing, and infrastructure support</span>
+          </li>
+        </ul>
+      </article>
+
+      <article class="panel panel-wide">
+        <p class="section-label">Education</p>
+        <div class="timeline">
+          <div>
+            <strong>M.Tech in Computer Science and Engineering</strong>
+            <span>Mar Athanasius College of Engineering • CGPA 8.29/10</span>
           </div>
-          <button class="view-more" aria-label="View more projects">View more</button>
-        </div>
-        <div class="card-full" hidden>
-          <div class="card-projects">
-            <h3>Projects</h3>
-            <ul class="proj-list">
-              <li>
-                <strong>Adaptive Handover Optimization in Open RAN</strong>
-                <div class="proj-meta">TensorFlow, TFLite, Python • <a href="https://github.com/aeiou-sudo/Adaptive-Handover-Optimization-in-Open-RAN.git" aria-label="GitHub link">GitHub</a> • M.Tech Mini Project</div>
-                <ul class="proj-bullets">
-                  <li>Developed an ML-based adaptive handover model using LSTM on the Berlin V2X dataset for predictive handovers in 5G networks, achieving 86.67% accuracy.</li>
-                  <li>Compressed the model using structured pruning and quantization, reducing size by 87% for real-time edge deployment in Open RAN environments.</li>
-                </ul>
-              </li>
-              <li>
-                <strong>Seccomp-based System Call Filtering</strong>
-                <div class="proj-meta">C, Linux, Seccomp • <a href="https://github.com/aeiou-sudo/Seccomp-based-System-Call-Filtering.git" aria-label="GitHub link">GitHub</a> • Micro Project</div>
-                <ul class="proj-bullets">
-                  <li>Developed a system-level security module using Seccomp to filter Linux system calls in real time for containerized workloads.</li>
-                  <li>Enforced syscall whitelisting policies, reducing kernel attack surface and preventing unauthorized system access.</li>
-                </ul>
-              </li>
-              <li>
-                <strong>CCTV Deployment Optimization</strong>
-                <div class="proj-meta">Python, PyQt5, ILP • <a href="https://github.com/aeiou-sudo/ADSA.git" aria-label="GitHub link">GitHub</a> • Micro Project</div>
-                <ul class="proj-bullets">
-                  <li>Created a PyQt5 GUI tool for ILP-based camera placement, ensuring 100% area coverage with 28.6% cost savings in synthetic urban layouts.</li>
-                </ul>
-              </li>
-            </ul>
+          <div>
+            <strong>B.Tech in Computer Science and Engineering</strong>
+            <span>APJ Abdul Kalam Technological University • CGPA 7.43/10</span>
           </div>
         </div>
       </article>
     </section>
+
+    <footer class="site-footer" id="contact">
+      <p>Available for research-driven engineering work and collaborations.</p>
+      <div class="contact-links">
+        <a href="mailto:pauljose.personal@gmail.com">Email</a>
+        <a href="https://github.com/aeiou-sudo" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/in/paul-jose-016" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+    </footer>
   </main>
-
-  <!-- Floating contact buttons (stack) -->
-  <nav class="fab-stack" aria-label="Contact links">
-    <a class="fab" href="mailto:pauljose.personal@gmail.com" aria-label="Email" title="Email" rel="noopener noreferrer">
-      <!-- mail icon -->
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M3 8.5v7A2.5 2.5 0 0 0 5.5 18h13A2.5 2.5 0 0 0 21 15.5v-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M3 8.5l8.5 5L20 8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M21 6.5H3v-1A2.5 2.5 0 0 1 5.5 3h13A2.5 2.5 0 0 1 21 5.5v1z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </a>
-
-    <a class="fab" href="https://github.com/aeiou-sudo" target="_blank" aria-label="GitHub" title="GitHub" rel="noopener noreferrer">
-      <!-- github icon -->
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M12 2C7.58 2 4 5.58 4 10c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.01.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.11.16 1.92.08 2.12.51.56.82 1.28.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.19 0 .21.15.46.55.38A8.01 8.01 0 0020 10c0-4.42-3.58-8-8-8z" fill="currentColor"/>
-      </svg>
-    </a>
-
-    <!-- Resume download button (local file) -->
-    <a class="fab" href="Paul_Jose_Research_Engineer_2025.pdf" download="Paul_Jose_Research_Engineer_2025.pdf" aria-label="Download resume" title="Download resume">
-      <!-- download icon -->
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M12 3v10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M8 9l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M21 21H3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </a>
-
-    <a class="fab" href="https://www.linkedin.com/in/paul-jose-016" target="_blank" aria-label="LinkedIn" title="LinkedIn" rel="noopener noreferrer">
-      <!-- linkedin icon -->
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M4.98 3.5A2.5 2.5 0 1 1 4.98 8.5 2.5 2.5 0 0 1 4.98 3.5zM3 9h4v12H3zM9 9h3.75v1.71h.05c.52-.99 1.8-2.03 3.7-2.03 3.95 0 4.68 2.6 4.68 5.98V21H17v-5.25c0-1.25-.02-2.86-1.74-2.86-1.74 0-2.01 1.36-2.01 2.77V21H9z" fill="currentColor"/>
-      </svg>
-    </a>
-  </nav>
 
   <script type="module" src="script.js"></script>
 </body>
