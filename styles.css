@@ -300,15 +300,40 @@ a:hover {
 }
 
 @media (max-width: 800px) {
-  .site-header,
+  .site-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 1.25rem 0;
+  }
+
   .site-footer {
     flex-direction: column;
     align-items: flex-start;
+    gap: 1.25rem;
   }
 
-  .site-nav,
+  .site-nav {
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+  }
+
+  .site-nav a {
+    display: block;
+    padding: 0.5rem 0;
+  }
+
   .contact-links {
-    justify-content: flex-start;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+  }
+
+  .contact-links a {
+    display: flex;
+    align-items: center;
+    padding: 0.65rem 0.85rem;
   }
 
   .panel {
@@ -317,11 +342,21 @@ a:hover {
 
   .hero {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 
   .hero-photo {
     order: -1;
     min-height: 280px;
+  }
+
+  .meta-row {
+    gap: 0.6rem;
+    flex-direction: column;
+  }
+
+  .meta-row span {
+    display: inline-block;
   }
 }
 
@@ -331,26 +366,154 @@ a:hover {
     width: min(calc(100% - 24px), var(--content-width));
   }
 
-  .site-main {
-    padding-top: 2rem;
+  .site-header {
+    padding: 1rem 0;
+    gap: 1.25rem;
   }
 
-  .panel {
-    padding: 1.15rem;
-    border-radius: 20px;
+  .site-main {
+    padding-top: 1.5rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .brand {
+    gap: 0.6rem;
+  }
+
+  .brand-mark {
+    width: 1.75rem;
+    height: 1.75rem;
+    font-size: 0.75rem;
+  }
+
+  .brand-text {
+    font-size: 0.75rem;
+  }
+
+  .site-nav {
+    gap: 0.6rem;
+    width: 100%;
+  }
+
+  .site-nav a {
+    padding: 0.4rem 0;
+    font-size: 0.75rem;
+  }
+
+  .hero {
+    gap: 1.25rem;
+    padding: 1rem 0 1.5rem;
   }
 
   .hero h1 {
-    font-size: clamp(2.5rem, 18vw, 4.2rem);
+    font-size: clamp(2rem, 16vw, 3.5rem);
+    margin: 0.5rem 0 0;
   }
 
-  .site-nav,
-  .brand-text,
-  .contact-links a,
-  .meta-row,
-  .eyebrow,
+  .eyebrow {
+    margin: 0 0 0.6rem;
+    font-size: 0.7rem;
+  }
+
+  .lead {
+    margin: 0.8rem 0 0;
+    font-size: clamp(0.9rem, 1.8vw, 1.02rem);
+    line-height: 1.5;
+  }
+
+  .meta-row {
+    margin-top: 1rem;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+  }
+
+  .meta-row span {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.7rem;
+  }
+
+  .section-grid {
+    gap: 0.75rem;
+  }
+
+  .panel {
+    padding: 1rem;
+    border-radius: 18px;
+    grid-column: 1 / -1;
+  }
+
   .section-label {
-    font-size: 0.78rem;
+    margin: 0 0 0.8rem;
+    font-size: 0.7rem;
+  }
+
+  .list,
+  .timeline {
+    gap: 0.8rem;
+  }
+
+  .list li,
+  .timeline div {
+    padding-top: 0.8rem;
+  }
+
+  .list strong,
+  .timeline strong {
+    margin-bottom: 0.1rem;
+    font-size: 0.95rem;
+  }
+
+  .list span,
+  .timeline span {
+    font-size: 0.85rem;
+  }
+
+  .site-footer {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.25rem 0;
+    align-items: flex-start;
+  }
+
+  .site-footer p {
+    margin: 0;
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+
+  .contact-links {
+    flex-direction: column;
+    gap: 0.65rem;
+    width: 100%;
+  }
+
+  .contact-links a {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.6rem 0.7rem;
+    font-size: 0.75rem;
+  }
+
+  .contact-links svg {
+    width: 0.9rem;
+    height: 0.9rem;
+  }
+
+  .fab-stack {
+    right: 0.75rem;
+    bottom: 1rem;
+    gap: 0.5rem;
+  }
+
+  .fab {
+    width: 40px;
+    height: 40px;
+  }
+
+  .fab svg {
+    width: 16px;
+    height: 16px;
   }
 }
 
