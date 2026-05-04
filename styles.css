@@ -331,9 +331,9 @@ a:hover {
   .contact-links {
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-end;
     gap: 0.55rem;
-    width: 100%;
+    width: auto;
   }
 
   .contact-links a {
