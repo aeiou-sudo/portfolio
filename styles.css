@@ -345,6 +345,10 @@ a:hover {
     gap: 1.5rem;
   }
 
+  .hero-copy {
+    text-align: center;
+  }
+
   .hero-photo {
     order: -1;
     min-height: 280px;
@@ -405,6 +409,10 @@ a:hover {
   .hero {
     gap: 1.25rem;
     padding: 1rem 0 1.5rem;
+  }
+
+  .hero-copy {
+    text-align: center;
   }
 
   .hero-photo {
